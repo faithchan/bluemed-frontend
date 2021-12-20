@@ -10,15 +10,15 @@ function App() {
     <div>
       <header><Navbar /></header>
       <main>
-    {/* <Routes>
+    <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/about" element={<HomePage />} />
+    {/* <Route path="/about" element={<HomePage />} />
     <Route path="/services" element={<ServicesPage />} />
     <Route path="/Login" element={<LoginPage/>} />
-    <Navigate to="/"/>
+    <Navigate to="/"/> */}
     </Routes>
     
-     */}
+    
   </main>
     </div>
 
