@@ -6,7 +6,7 @@ const AboutSection = () => {
         
             <div className="relative">
             <img src={image} alt="Background image" className="object-cover w-full h-full"/>
-            <div className="font-MT tracking-widest mx-40 mt-8 absolute w-full  inset-y-1/4">
+            <div className="font-MT tracking-widest pl-40 mt-8 absolute w-full  inset-y-1/4">
                 <h2 className="text-blue-400 text-xl mb-4 font-semibold">
                     Welcome to BlueMed
                 </h2>

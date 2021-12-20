@@ -10,7 +10,7 @@ const Navbar = () => {
        
        <div className="text-blue-400 font-MT font-medium">
            <nav className="flex mt-8 mx-20 place-content-between">
-           <span className=""><Link to="/about"><img src={bluelogo} alt="Logo" className="h-10 ml-8 mb-6"/></Link></span>
+           <span className=""><Link to="/"><img src={bluelogo} alt="Logo" className="h-10 ml-8 mb-6"/></Link></span>
      <ul className="flex items-right mr-10 mt-2 h-full ">
          <li className="mx-10"><Link to="/about">About</Link></li>
          <li className="mx-10"><Link to="/services">Services</Link></li>
