@@ -1,5 +1,6 @@
 import React from 'react'
 import DoctorCard from './DoctorCard'
+import CategoryList from './CategoryList'
 
 const ServicesPage = () => {
     return (
@@ -7,8 +8,8 @@ const ServicesPage = () => {
             <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Categories</p>
             
-    
-            <div className="mx-20 my-10 grid grid-cols-3">
+            <CategoryList />
+            <div className="mx-20 mt-4 mb-8 grid grid-cols-3">
             <DoctorCard />
             <DoctorCard />
             <DoctorCard />
