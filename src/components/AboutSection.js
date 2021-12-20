@@ -1,7 +1,12 @@
 import React from 'react'
 import image from "../background.jpg"
+import {useNavigate} from 'react-router-dom'
+
+
 
 const AboutSection = () => {
+    let navigate = useNavigate();
+        
     return (
         
             <div className="relative">
@@ -14,7 +19,7 @@ const AboutSection = () => {
                     Get Instant Access <br/> to <span className="text-blue-400">Health Care</span>
                 </h1>
                 <p className="tracking-normal text-sm mb-6">Skip the long queues, quick access to doctors <br/>and medication delivered to your doorstep.</p>
-                <button className="bg-blue-400 hover:bg-blue-450 text-white tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " >View Services</button>
+                <button className="bg-blue-400 hover:bg-blue-450 text-white tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " onClick={()=>{navigate('/services')}} >View Services</button>
             </div>
            
         </div>
