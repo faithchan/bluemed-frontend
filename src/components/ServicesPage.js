@@ -10,6 +10,7 @@ const ServicesPage = () => {
             
             <CategoryList />
             <div className="mx-20 mt-4 mb-8 grid grid-cols-3">
+            {/* Need to fetch api to render the doctor cards */}
             <DoctorCard />
             <DoctorCard />
             <DoctorCard />
