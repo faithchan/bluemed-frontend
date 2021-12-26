@@ -6,6 +6,8 @@ import HomePage from './components/HomePage';
 import ServicesPage from './components/ServicesPage'
 import LoginPage from "./components/LoginPage"
 import AccountsPage from "./components/AccountsPage"
+import CreateAccountPage from './components/CreateAccountPage';
+import MyAppPage from './components/MyAppPage';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
     <Route path="/about" element={<HomePage />} />
     <Route path="/services" element={<ServicesPage />} />
     <Route path="/login" element={<LoginPage/>} />
+    <Route path="/createaccount" element={<CreateAccountPage/>} />
     <Route path="/account" element={<AccountsPage/>} />
+    <Route path="/myapp" element={<MyAppPage/>} />
    
     </Routes>
     
