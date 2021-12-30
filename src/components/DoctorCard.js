@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DoctorCard = () => {
+const DoctorCard = ({setBookingModal}) => {
     return (
         <div className="px-8 mb-8">
             <div className=" rounded-md container w-full  bg-white  shadow-lg">
@@ -19,12 +19,12 @@ const DoctorCard = () => {
                     </div>
                     <hr className="mt-6" />
                     <div className="flex rounded-b-lg bg-gray-50 ">
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer ">
+                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
                             <p><span className="font-semibold">$100</span> Per Session</p>
                         </div>
                         <div className="border"></div>
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                            <span className="font-semibold">Book Now </span> 
+                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
+                            <span className="font-semibold" >Book Now </span> 
                         </div>
 
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import bluelogo from "../bluelogo.svg"
 
-const BookingModal = () => {
+const BookingModal = ({setBookingModal}) => {
     return (
         <div className="">
             	<div class="absolute bg-black opacity-80 inset-0 z-0 "></div>
@@ -27,7 +27,11 @@ const BookingModal = () => {
                 <span className="">
                     <span className="mr-4">
                     <label className="block font-MT text-sm text-gray-700">Patient's Name</label>
-                    <input type="text" name="" id="" placeholder="" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
+                    <select name="patient" id="patient" className="w-full p-2 rounded-lg" required>
+                    <option value="name">Sarah Coleman</option>
+                    <option value="name1">Dany Bailey</option>
+                    
+                    </select>
                     </span>
                 </span>
 
@@ -46,14 +50,14 @@ const BookingModal = () => {
                 </span>
 
                 <span className="mr-4">
-                    <label className="mt-2 block font-MT text-sm text-gray-700">Notes to Doctor</label>
+                    <label className="mt-4 block font-MT text-sm text-gray-700">Notes to Doctor</label>
                     <input type="text" name="" id="" placeholder="optional" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete />
                 </span>
 
 
                 <span className="flex justify-between">
                 <button  className="w-full block mr-2 bg-white hover:bg-gray-200 focus:bg-gray-300 text-gray-400 font-semibold rounded-full font-MT
-                    px-4 py-3 mt-6">Cancel</button>
+                    px-4 py-3 mt-6" onClick={()=>{setBookingModal(false)}}>Cancel</button>
 
                      <button type="submit" className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
                     px-4 py-3 mt-6">Confirm</button>

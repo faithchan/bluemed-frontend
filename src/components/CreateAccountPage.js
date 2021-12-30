@@ -101,8 +101,6 @@ const CreateAccountPage = () => {
 
       <hr className="mt-6  border-gray-300 w-full" />
 
-   
-
       <span className="mt-4 flex font-MT text-sm">Have an account? <p className="text-blue-400 ml-2 cursor-pointer hover:text-blue-450 font-semibold" onClick={()=>{navigate('/login')}}>Login here</p></span>
 
 
