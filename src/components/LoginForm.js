@@ -31,8 +31,8 @@ const LoginForm = () => {
                 focus:bg-white focus:outline-none" required />
         </span>
 
-        <span className="text-right mt-2">
-          <a href="#" className="text-xs font-semibold font-MT text-gray-400 hover:text-blue-400 focus:text-blue-700">Forgot Password?</a>
+        <span className="">
+          <p className="mt-2 cursor-pointer text-xs font-semibold font-MT text-gray-400 hover:text-blue-400 focus:text-blue-700">Forgot Password?</p>
         </span>
 
         <button type="submit" className="w-full block bg-blue-400 hover:bg-blue-450 focus:bg-blue-400 text-white font-semibold rounded-full font-MT

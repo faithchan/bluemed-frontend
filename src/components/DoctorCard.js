@@ -3,7 +3,7 @@ import React from 'react'
 const DoctorCard = () => {
     return (
         <div className="px-8 mb-8">
-            <div className=" rounded-md container w-full  bg-white  shadow-lg    transform   duration-200 easy-in-out">
+            <div className=" rounded-md container w-full  bg-white  shadow-lg">
                 <div className=" h-32 overflow-hidden rounded-md" >
                     <img class="w-full rounded-md" src="https://images.unsplash.com/photo-1625134673337-519d4d10b313?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2738&q=80" alt="" />
                 </div>
