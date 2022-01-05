@@ -1,7 +1,7 @@
 import React from 'react'
 import bluelogo from "../bluelogo.svg"
 
-const BookingModal = ({setBookingModal}) => {
+const BookingModal = ({setBookingModal, name, profession, pricing}) => {
     return (
         <div className="">
             	<div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -13,14 +13,14 @@ const BookingModal = ({setBookingModal}) => {
                 <span className="flex justify-between mb-2 z-20">
                     <span className="font-MT text-blue-400 font-semibold">
                         <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
-                        <p>ID #0001</p>
+                        
                         <p>Booking Details</p>
                     </span>
 
                     <span className="font-MT text-blue-400 font-semibold text-xs mt-2">
-                        <p>Doctor Name</p>
-                        <p>Type of Service</p>
-                        <p>Rates ($) /h</p>
+                        <p>{name}</p>
+                        <p>{profession}</p>
+                        <p>${pricing} per session</p>
                     </span>
                  </span>
 

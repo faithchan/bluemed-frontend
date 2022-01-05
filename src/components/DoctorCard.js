@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DoctorCard = ({setBookingModal}) => {
+const DoctorCard = ({setBookingModal, img, name, languages,bio, gender,pricing, profession}) => {
     return (
         <div className="px-8 mb-8">
             <div className=" rounded-md container w-full  bg-white  shadow-lg">
@@ -13,14 +13,15 @@ const DoctorCard = ({setBookingModal}) => {
                 </div>
                 <div className="rounded-b-lg">
                     <div className="text-center px-14 font-MT">
-                        <h2 className="text-gray-800 text-3xl font-semibold">Doctor Name</h2>
-                        <p className="text-gray-400 mt-2">Psychiatrist (M)</p>
-                        <p className="mt-2 text-gray-600">Dr xx is a certified board psychiatrist specialising in addiction psychiatry. He is fluent in English & Chinese. </p>
+                        <h2 className="text-gray-800 text-xl font-semibold">{name}</h2>
+                        <p className="text-gray-400 mt-2">{profession} | {gender}</p>
+                        <p className="mt-2 text-gray-600">{bio}.</p>
+                        <p className="mt-2 text-gray-600 text-xs">Proficient in {languages}</p>
                     </div>
                     <hr className="mt-6" />
                     <div className="flex rounded-b-lg bg-gray-50 ">
                         <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
-                            <p><span className="font-semibold">$100</span> Per Session</p>
+                            <p><span className="font-semibold">${pricing}</span> / Session</p>
                         </div>
                         <div className="border"></div>
                         <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>

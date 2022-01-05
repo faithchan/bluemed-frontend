@@ -11,13 +11,32 @@ const ServicesPage = () => {
     const [GPServices, setGPServices] = useState(false)
     const [wellbeingServices, setWellbeingServices] = useState(false)
     const [paediatricsServices, setPaediatricsServices] = useState(false)
+    const [data, setData] = useState([])
 
+    const doctorsURL = "https://bluemed-backend.herokuapp.com/doctor/all"
 
+    const getAllDoctors = async()=>{
+        try{
+            const response = await fetch (doctorsURL);
+            const data = await response.json();
+            setData(data);
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }   
+    
+    useEffect(()=>{
+        setAllServices(true)
+        getAllDoctors();
+    
+    }, [])
+    
 
     return (
            
         <div className="">
-            {showBookingModal?<BookingModal setBookingModal={setBookingModal}/>:""}
+            {showBookingModal? data.map((service)=><BookingModal pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>):""}
 
             <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Categories</p>
@@ -31,13 +50,12 @@ const ServicesPage = () => {
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
-            <DoctorCard setBookingModal={setBookingModal}/>
-            <DoctorCard setBookingModal={setBookingModal}/>
-            <DoctorCard setBookingModal={setBookingModal}/>
-        
-            
-
+            {allServices ? data.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
            
+
+
+
+        
 
             </div>
           
