@@ -26,6 +26,10 @@ const ServicesPage = () => {
         }
     }   
     
+    const filterGPDoctor = data.filter((GP)=> GP.profession === "General Practitioner")
+    const filterPaeDoctor = data.filter((Pae)=> Pae.profession === "Paediatrics")
+    const filterPsyDoctor = data.filter((Psy)=> Psy.profession === "Psychologist")
+
     useEffect(()=>{
         setAllServices(true)
         getAllDoctors();
@@ -51,7 +55,9 @@ const ServicesPage = () => {
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
             {allServices ? data.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
-           
+            {GPServices ? filterGPDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
+            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
+            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
 
 
 

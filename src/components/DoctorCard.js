@@ -8,7 +8,7 @@ const DoctorCard = ({setBookingModal, img, name, languages,bio, gender,pricing, 
                     <img class="w-full rounded-md" src="https://images.unsplash.com/photo-1625134673337-519d4d10b313?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2738&q=80" alt="" />
                 </div>
                 <div className="flex justify-center px-5  -mt-12">
-                    <img className="h-32 w-32 bg-white bg-cover p-2 rounded-full  " src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" alt="" />
+                    <img className="h-32 w-32 bg-white bg-cover p-2 rounded-full  " src={img} alt="" />
 
                 </div>
                 <div className="rounded-b-lg">
