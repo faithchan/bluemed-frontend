@@ -5,7 +5,7 @@ const BookingModal = ({setBookingModal, name, profession, pricing}) => {
     return (
         <div className="">
             	<div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
-                <div class="w-full  max-w-lg p-5 absolute inset-x-0 z-10  mx-auto my-auto rounded-xl shadow-lg  bg-gray-100 ">
+                <div class="w-full max-w-lg p-5 absolute inset-x-0 z-10  mx-auto my-auto rounded-xl shadow-lg  bg-gray-100 ">
                 <div class="">
        
                 <form className="m-4 font-MT" action="#" method="POST">

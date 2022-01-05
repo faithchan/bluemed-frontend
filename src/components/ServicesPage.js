@@ -31,16 +31,14 @@ const ServicesPage = () => {
     const filterPsyDoctor = data.filter((Psy)=> Psy.profession === "Psychologist")
 
     useEffect(()=>{
-        setAllServices(true)
+ 
         getAllDoctors();
     
     }, [])
-    
 
     return (
            
         <div className="">
-            {showBookingModal? data.map((service)=><BookingModal pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>):""}
 
             <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Categories</p>
@@ -54,23 +52,13 @@ const ServicesPage = () => {
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
-            {allServices ? data.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
-            {GPServices ? filterGPDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
-            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
-            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} setBookingModal={setBookingModal}/>) : ""}
-
-
-
-        
+            {allServices ? data.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {GPServices ? filterGPDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession}/>) : ""}
+            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
 
             </div>
-          
 
-          
-
-   
-
-        
         </div>
     )
 }
