@@ -52,10 +52,10 @@ const ServicesPage = () => {
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
-            {allServices ? data.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
-            {GPServices ? filterGPDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession}/>) : ""}
-            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
-            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {allServices ? data.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {GPServices ? filterGPDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession}/>) : ""}
+            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
 
             </div>
 
