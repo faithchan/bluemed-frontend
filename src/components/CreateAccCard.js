@@ -3,7 +3,7 @@ import React from 'react'
 const CreateAccCard = () => {
     return (
         <div>
-            <form className="mt-6 font-MT" onSubmit={} method="POST">
+            <form className="mt-6 font-MT" method="POST">
 
             <span className="flex justify-between">
                 <span className="mr-4">
