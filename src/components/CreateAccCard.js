@@ -2,12 +2,12 @@ import { useReducer } from "react";
 
 const CreateAccCard = () => {
 
-        const regexEmailCheck = (emailTest) => {
-            const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$/i
-            return regexEmail.test(emailTest)
-        }
+    const regexEmailCheck = (emailTest) => {
+        const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$/i
+        return regexEmail.test(emailTest)
+    }
 
-       const itemReducer = (state, action) => {
+    const itemReducer = (state, action) => {
         switch (action.type) {
             case "FULLNAME":
                 return {
@@ -93,6 +93,14 @@ const CreateAccCard = () => {
         allergies: "",
         insuranceID: ""
     })
+
+    const focusOutNRIC = (event) => {
+        console.log("no focus NRIC")
+    }
+
+    const focusOutPassword2 = (event) => {
+        console.log("no focus password 2")
+    }
 
     const handleNameFull = (event) => {
 
@@ -237,7 +245,7 @@ const CreateAccCard = () => {
             
                 <span className="">
                 <label className="block font-MT text-sm text-gray-700">NRIC</label>
-                <input type="text" onChange={handleNRIC} value={entry.NRIC} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                <input type="text" onChange={handleNRIC} onBlur={focusOutNRIC} value={entry.NRIC} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                 </span>
 
             </span>
@@ -252,7 +260,7 @@ const CreateAccCard = () => {
                 <span className="flex font-MT">
                 <input type="password" onChange={handlePassword} value={entry.password} name="" id="" placeholder="" minLength="6" className="mr-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
-                        <input type="password" onChange={handlePassword2} value={entry.password2} name="" id="" placeholder="Retype password" minLength="6" className=" ml-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                        <input type="password" onChange={handlePassword2} onBlur={focusOutPassword2} value={entry.password2} name="" id="" placeholder="Retype password" minLength="6" className=" ml-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
                         </span>
                 </span>
