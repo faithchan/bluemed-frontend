@@ -2,10 +2,15 @@ import React from 'react'
 import DoctorCard from './DoctorCard'
 import CategoryList from './CategoryList'
 import BookingModal from './BookingModal'
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useContext } from 'react'
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 
 const ServicesPage = () => {
+    const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
+    
     const [showBookingModal, setBookingModal] = useState(false);
     const [allServices, setAllServices] = useState(true)
     const [GPServices, setGPServices] = useState(false)

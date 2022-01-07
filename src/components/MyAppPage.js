@@ -1,9 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import AppointmentCard from './AppointmentCard'
 import AppList from './AppList'
 import PastAppCard from './PastAppCard'
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const MyAppPage = () => {
+    const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
+    
     const[schedButton, setSchedButton] =useState(true)
     const[pastButton, setPastButton] =useState(false)
     const[pastApp, setPastApp]=useState('')

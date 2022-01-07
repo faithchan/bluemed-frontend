@@ -8,10 +8,17 @@ import LoginPage from "./components/LoginPage"
 import AccountsPage from "./components/AccountsPage"
 import CreateAccountPage from './components/CreateAccountPage';
 import MyAppPage from './components/MyAppPage';
+import React, {useState} from 'react';
+import {LoginContext, adminContext, userIDContext} from './global/Context'
 
 function App() {
+  const[loggedIn, setLoggedIn]= useState(true)
+  const[userID, setUserID]= useState('')
+  const[admin, setAdmin]= useState(false)
   return (
-    <div>
+    <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
+      <userIDContext.Provider value={{userID, setUserID}}>
+      <adminContext.Provider  value={{admin, setAdmin}}>
       <header><Navbar /></header>
       <main>
     <Routes>
@@ -28,7 +35,9 @@ function App() {
     
   </main>
   <footer className=""><Footer/></footer>
-    </div>
+  </adminContext.Provider>
+  </userIDContext.Provider>
+    </LoginContext.Provider>
 
   )
 }

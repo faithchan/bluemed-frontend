@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import CreateAccCard from './CreateAccCard';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const CreateAccountPage = () => {
+  const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
+
     let navigate = useNavigate();
     return (
         <div>

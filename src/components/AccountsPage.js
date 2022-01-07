@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import UserImage from "../userimage.svg"
 import UserDetails from './UserDetails'
 import DependencyDetails from './DependencyDetails'
 import addButton from '../addButton.svg'
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const AccountsPage = () => {
+    const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
     return (
         <div >
            {/* //check role of user const [role, setRole] = useState('')  */}
