@@ -45,14 +45,14 @@ const AccountsPage = () => {
 
            <hr className="mx-28"/>
            <div className="flex ">
-           <p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependancy</p>
-           <img src={addButton} alt="userimage" className="w-5 ml-4" />
+           {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependancy</p>:""}
+           {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
 
            
            </div>
          
 
-           <DependencyDetails dependents={dependents}/>
+           {admin?"":<DependencyDetails dependents={dependents}/>}
       
            
            
