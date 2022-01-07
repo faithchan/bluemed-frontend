@@ -1,7 +1,9 @@
 import React from 'react'
 import UserImage from "../userimage.svg"
 
-const DependencyDetails = () => {
+const DependencyDetails = ({dependents}) => {
+console.log(dependents)
+
     return (
         <div>
             <div className="mx-28 mb-8 ">
