@@ -1,6 +1,11 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 
 const CreateAccCard = () => {
+
+        const regexEmailCheck = (emailTest) => {
+            const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$/i
+            return regexEmail.test(emailTest)
+        }
 
        const itemReducer = (state, action) => {
         switch (action.type) {
@@ -95,11 +100,11 @@ const CreateAccCard = () => {
     }
     const handleNRIC = (event) => {
         
-        dispatchItem({ type: "NRIC", value: event.target.value}) 
+        dispatchItem({ type: "NRIC", value: event.target.value.toUpperCase()}) 
     }
     const handleEmail = (event) => {
         
-        dispatchItem({ type: "EMAIL", value: event.target.value}) 
+        dispatchItem({ type: "EMAIL", value: event.target.value.toLowerCase()}) 
     }
     const handlePassword = (event) => {
         
@@ -133,11 +138,86 @@ const CreateAccCard = () => {
         
         dispatchItem({ type: "INSURANCEID", value: event.target.value}) 
     }
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         console.log(entry)
-        if(entry.name !== "" && entry.NRIC !== "" && entry.email !== "" && entry.password !== "" && entry.password2 === entry.password 
-        && entry.DOB !== "" && entry.gender !== "" && entry.address !== "") {
-            console.log("submitted")
+        //console.log(regexEmailCheck(entry.email))
+
+        if(entry.name !== "" && entry.NRIC !== "" && regexEmailCheck(entry.email) && entry.password !== "" && entry.password2 === entry.password 
+        && entry.DOB !== "" && entry.gender !== "" && entry.address !== "" && entry.contactNumber!== "") {
+            console.log("submitting")
+
+            // const date = new Date(Date.parse(entry.DOB).toLocaleDateString(
+            //     'en-UK', 
+            //     {
+            //       day: '2-digit',
+            //       month: '2-digit',
+            //       year: 'numeric'
+            //     }
+            // ))
+            const bodySend = JSON.stringify(
+                {
+                "DOB": new Date(Date.parse(entry.DOB)).toLocaleDateString("en-GB"),
+                "name": entry.name,
+                "NRIC": entry.NRIC,
+                "email": entry.email,
+                //hash the password
+                "password": entry.password,
+                "gender": entry.gender,
+                "address": entry.address,
+                "contactNumber": entry.contactNumber,
+                "allergies": entry.allergies,
+                "insuranceID": entry.insuranceID,
+                "img": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                }
+            )
+            console.log(bodySend)
+            //check if email and nric are currently used
+            try{
+                const responseEmail = await fetch (`https://bluemed-backend.herokuapp.com/user/email/${entry.email}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                      },
+                }
+                );
+                const responseNRIC = await fetch (`https://bluemed-backend.herokuapp.com/patient/NRIC/${entry.NRIC}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                      },
+                }
+                );
+                if (responseNRIC.ok) {
+                    console.log("nric is already in use")
+                }
+                if (responseEmail.ok) {
+                    console.log("email is already in use")
+                }
+                if (!responseEmail.ok && !responseNRIC.ok) {
+                    console.log("Good to go, no used NRIC or email found")
+                    try {
+                        const responseAccount = await fetch (`https://bluemed-backend.herokuapp.com/account/`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: bodySend
+                        }
+                        );
+                        const dataAccount = await responseAccount.json();
+                        console.log(dataAccount)
+                    }
+                    catch(error){
+                        console.log("error>>>",error)
+                    }
+                }
+            }
+            catch(error){
+                console.log("error>>>",error)
+            }
         }
         if(entry.password2 !== entry.password)
         {
@@ -164,7 +244,7 @@ const CreateAccCard = () => {
                
                 <span>
                 <label className="block mt-2 font-MT text-sm text-gray-700">Email</label>
-                    <input type="email" onChange={handleEmail} value={entry.email} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                    <input type="email" onChange={handleEmail} value={entry.email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                 </span>
 
                 <span className=''>
@@ -182,7 +262,7 @@ const CreateAccCard = () => {
                 
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" htmlFor="birthdate">Date of birth</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} id="birthday" name="birthday"/>
+                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} id="birthday" name="birthday" required/>
                     </span>
 
 
@@ -222,7 +302,7 @@ const CreateAccCard = () => {
                 <span className="flex justify-between mt-4">
                     <span className="mr-4">
                     <label className="block font-MT text-sm text-gray-700">Drug Allergies</label>
-                    <input type="text" onChange={handleAllergies} value={entry.allergies} name="" id="" placeholder="Optional" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                    <input type="text" onChange={handleAllergies} value={entry.allergies} name="" id="" placeholder="Enter NA if none" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                     </span>
                 
                     <span className="">
