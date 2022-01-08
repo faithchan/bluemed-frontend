@@ -19,7 +19,7 @@ const AccountsPage = () => {
 
 
     const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
-console.log(patientDetailsURL)
+    console.log(patientDetailsURL)
 
     const getPatientDetails = async()=>{
         try{
@@ -35,13 +35,15 @@ console.log(patientDetailsURL)
         }
     }   
 
-    useEffect(() => 
+    useEffect(() => {
+        console.log("hello")
         getPatientDetails()
+    }
     , [])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
-    console.log(dependents)
-    console.log(patientDetails)
+    // console.log(dependents)
+    // console.log(patientDetails)
   
     
     return (
@@ -63,7 +65,7 @@ console.log(patientDetailsURL)
            </div>
          
             
-           {admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} DOB={dep.DOB} NRIC={dep.NRIC} address={dep.address} allergies={dep.allergies} gender={dep.gender} insuranceID={dep.insuranceID} name={dep.name} relation={dep.relation}/>)}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} DOB={dep.DOB} NRIC={dep.NRIC} address={dep.address} allergies={dep.allergies} gender={dep.gender} insuranceID={dep.insuranceID} name={dep.name} relation={dep.relation}/>)):""}
       
            
            
