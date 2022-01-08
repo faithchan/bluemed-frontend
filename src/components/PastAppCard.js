@@ -1,6 +1,32 @@
 import React from 'react'
+import { useEffect, useContext } from 'react'
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const PastAppCard = () => {
+
+  const {userID, setUserID} =  useContext(userIDContext)
+
+      //fetching data for pastApp URL
+
+      const pastAppURL = `https://bluemed-backend.herokuapp.com/pastApp/${userID}`
+
+      const appID = async() => {
+          try {
+              const response = await fetch (pastAppURL);
+              const data = await response.json(); 
+              console.log(data)
+           }
+           catch(err) {
+               console.log('error:', err)
+           }
+          }
+      
+      useEffect(() => {
+  
+          appID();
+  
+        }, []);
+  
     return (
         <div>
             <div className=" rounded-lg bg-white drop-shadow-lg ">

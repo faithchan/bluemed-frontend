@@ -1,9 +1,23 @@
 import React from 'react'
+import { useEffect,  } from 'react'
 
 const AppList = ({setPastApp, setSchedApp, pastApp, schedApp, setSchedButton,schedButton, setPastButton, pastButton}) => {
 
 
+      //fetching data for schedApp
 
+      const schedAppURL = "https://bluemed-backend.herokuapp.com/schApp/all"
+
+      const allSchedApp = async() => {
+          try {
+              const response = await fetch (schedAppURL); 
+              const data = await response.jason(); 
+              setSchedApp (data);
+          } 
+          catch (err) {
+              console.log("error:", err)
+          }
+      }
 
     return (
         <div>
