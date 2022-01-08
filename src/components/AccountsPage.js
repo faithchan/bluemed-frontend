@@ -4,8 +4,11 @@ import UserDetails from './UserDetails'
 import DependencyDetails from './DependencyDetails'
 import addButton from '../addButton.svg'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
+import EditDepModal from './EditDepModal'
 
 const AccountsPage = () => {
+    const [editDependency, setEditDependency] = useState(false)
+    const [editUser, setEditUser] = useState(false)
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
@@ -36,23 +39,22 @@ const AccountsPage = () => {
     
     return (
         <div >
+            {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency}/>:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
            <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Account Details</p>
            <img src={UserImage} alt="userimage" className="w-2/12 mx-auto" />
 
-           <UserDetails name={name} gender={gender} DOB={DOB} address={address} insuranceID={insuranceID} allergies={allergies} />
+           <UserDetails name={name} gender={gender} DOB={DOB} address={address} insuranceID={insuranceID} allergies={allergies} editUser={editUser} setEditUser={setEditUser} />
 
            <hr className="mx-28"/>
            <div className="flex ">
-           <p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependancy</p>
-           <img src={addButton} alt="userimage" className="w-5 ml-4" />
-
-           
+           {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependency</p>:""}
+           {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
            </div>
          
 
-           <DependencyDetails dependents={dependents}/>
+           {admin?"":<DependencyDetails dependents={dependents} editDependency={editDependency} setEditDependency={setEditDependency}/>}
       
            
            

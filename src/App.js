@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 import {LoginContext, adminContext, userIDContext} from './global/Context'
 
 function App() {
-  const[loggedIn, setLoggedIn]= useState(true)
+  const[loggedIn, setLoggedIn]= useState(false)
   const[userID, setUserID]= useState('61d805bf770c3094270135f3')
   const[admin, setAdmin]= useState(false)
   return (
@@ -27,8 +27,10 @@ function App() {
     <Route path="/services" element={<ServicesPage />} />
     <Route path="/login" element={<LoginPage/>} />
     <Route path="/createaccount" element={<CreateAccountPage/>} />
-    <Route path="/account" element={<AccountsPage/>} />
-    <Route path="/myapp" element={<MyAppPage/>} />
+
+    {/* Create Error Page to show forbidden or unauthorised */}
+    {loggedIn?<Route path="/account" element={<AccountsPage/>} />:""}
+    {loggedIn?<Route path="/myapp" element={<MyAppPage/>} />:""}
    
     </Routes>
     
