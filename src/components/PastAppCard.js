@@ -1,6 +1,7 @@
 import React from 'react'
 
 const PastAppCard = () => {
+  
     return (
         <div>
             <div className=" rounded-lg bg-white drop-shadow-lg ">
