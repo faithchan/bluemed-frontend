@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
 import bluelogo from "../bluelogo.svg"
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const BookingModal = ({setBookingModal, name, profession, pricing}) => {
+    const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
+
+
     return (
         <div className="">
             	<div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -59,9 +66,8 @@ const BookingModal = ({setBookingModal, name, profession, pricing}) => {
                 <button  className="w-full block mr-2 bg-white hover:bg-gray-200 focus:bg-gray-300 text-gray-400 font-semibold rounded-full font-MT
                     px-4 py-3 mt-6" onClick={()=>{setBookingModal(false)}}>Cancel</button>
 
-                     <button type="submit" className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
+                    <button type="submit" className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
                     px-4 py-3 mt-6">Confirm</button>
-
                 </span>
                
 

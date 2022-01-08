@@ -1,8 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { useNavigate } from 'react-router';
 import BookingModal from './BookingModal'
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 const DoctorCard = ({ img, name, languages,bio, gender,pricing, profession, key}) => {
     const [showBookingModal, setBookingModal] =useState(false)
+    const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+    const {admin, setAdmin} =  useContext(adminContext)
+    const {userID, setUserID} =  useContext(userIDContext)
+    let navigate = useNavigate();
 
     return (
         <div>
@@ -24,14 +30,21 @@ const DoctorCard = ({ img, name, languages,bio, gender,pricing, profession, key}
                         <p className="mt-2 text-gray-600 text-xs">Proficient in {languages}</p>
                     </div>
                     <hr className="mt-6" />
+
                     <div className="flex rounded-b-lg bg-gray-50 ">
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
-                            <p><span className="font-semibold">${pricing}</span> / Session</p>
-                        </div>
+
+                        {loggedIn?<div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
+                            <p><span className="font-semibold">${pricing}</span> / Session</p></div>:
+                            <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{navigate('/login')}}>
+                            <p><span className="font-semibold">${pricing}</span> / Session</p></div>}
+
                         <div className="border"></div>
-                        <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
-                            <span className="font-semibold" >Book Now </span> 
-                        </div>
+
+                        {loggedIn?<div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{setBookingModal(true)}}>
+                            <span className="font-semibold" >Book Now </span>
+                        </div>:<div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer " onClick={()=>{navigate('/login')}}>
+                            <span className="font-semibold" >Book Now </span>
+                        </div>}
 
                     </div>
                 </div>
