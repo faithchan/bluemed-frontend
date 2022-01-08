@@ -27,7 +27,7 @@ const AddDepModal = ({setAddDep}) => {
         </span>
 
         <span className="ml-8">
-        <label className="block font-MT text-sm text-gray-700" for="appt">DOB</label>
+        <label className="block font-MT text-sm text-gray-700" for="appt">Date of birth</label>
         <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="date" id="DOB" name="DOB"
         min="09:00" max="18:00" required />
         </span>
@@ -40,8 +40,21 @@ const AddDepModal = ({setAddDep}) => {
         </span>
 
         <span className="ml-8">
-        <label className="block font-MT text-sm text-gray-700" for="appt">Insurance ID</label>
+        <label className="block font-MT text-sm text-gray-700" for="appt">NRIC</label>
         <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="text" id="apptime" name="DOB"
+        min="09:00" max="18:00" required />
+        </span>
+        </span>
+
+        <span className="flex  mt-4 justify-between">   
+        <span className="">
+        <label className="block font-MT text-sm text-gray-700" for="birthdate">Relation</label>
+        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="editname" name="name" required/>
+        </span>
+
+        <span className="ml-8">
+        <label className="block font-MT text-sm text-gray-700" for="appt">Date of birth</label>
+        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="date" id="DOB" name="DOB"
         min="09:00" max="18:00" required />
         </span>
         </span>
@@ -51,6 +64,27 @@ const AddDepModal = ({setAddDep}) => {
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Drug allergies</label>
         <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="appdate" name="name" required/>
         </span>
+
+        <span>
+                    <label className="block font-MT text-sm text-gray-700">Gender</label>
+
+                    <span className="flex mt-3">   
+                    <label className="flex radio p-2 cursor-pointer">
+                        <input className="my-auto transform scale-125" type="radio"  name="gender" value="male" id="male" />
+                            <div className="title px-2">M</div>
+                        </label>
+
+                        <label className="flex radio p-2 cursor-pointer">
+                        <input className="my-auto transform scale-125" type="radio" name="gender" value="female" id="female"  />
+                        <div className="title px-2">F</div>
+                        </label>
+
+                        <label className="flex radio p-2 cursor-pointer">
+                        <input className="my-auto transform scale-125" type="radio"  name="gender" value="others" id="others"  />
+                        <div className="title px-2">Others</div>
+                        </label>
+                        </span> 
+                        </span>
         </span>
 
 
