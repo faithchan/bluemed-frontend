@@ -1,8 +1,9 @@
 import React from 'react'
 import UserImage from "../userimage.svg"
+import EditDepModal from './EditDepModal'
 
-const DependencyDetails = ({dependents}) => {
-console.log(dependents)
+const DependencyDetails = ({dependents, editDependency, setEditDependency}) => {
+
 
     return (
         <div>
@@ -24,7 +25,7 @@ console.log(dependents)
                <li className="text-xs"> Drug Allergies: </li>
            </ul>
        <div className="flex justify-center mt-6">
-       <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto "  >Edit Details</button>
+       <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " onClick={()=>setEditDependency(true)} >Edit Details</button>
 
        </div>
            
