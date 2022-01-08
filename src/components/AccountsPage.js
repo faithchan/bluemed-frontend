@@ -5,6 +5,7 @@ import DependencyDetails from './DependencyDetails'
 import addButton from '../addButton.svg'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
 import EditDepModal from './EditDepModal'
+import EditUserModal from './EditUserModal'
 
 const AccountsPage = () => {
     const [editDependency, setEditDependency] = useState(false)
@@ -35,10 +36,12 @@ const AccountsPage = () => {
     , [])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
-   console.log(dependents)
+
+  
     
     return (
         <div >
+            {editUser?<EditUserModal setEditUser={setEditUser}/>:""}
             {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency}/>:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
            <hr className="mx-28"/>

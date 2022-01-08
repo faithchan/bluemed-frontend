@@ -3,7 +3,7 @@ import bluelogo from "../bluelogo.svg"
 
 const EditDepModal = ({setEditDependency,editDependency}) => {
     return (
-        (
+        
             <div className="">
                     <div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
                     <div class="w-full max-w-lg p-5 absolute inset-x-0 z-10  mx-auto my-auto rounded-xl shadow-lg  bg-gray-100 ">
@@ -15,7 +15,7 @@ const EditDepModal = ({setEditDependency,editDependency}) => {
                         <span className="font-MT text-blue-400 font-semibold">
                             <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
                             
-                            <p>Edit dependency details</p>
+                            <p>Edit user details</p>
                         </span>
     
                        
@@ -76,7 +76,7 @@ const EditDepModal = ({setEditDependency,editDependency}) => {
                     
             </div>
         )
-    )
+    
 }
 
 export default EditDepModal
