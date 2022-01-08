@@ -135,8 +135,9 @@ const CreateAccCard = () => {
         dispatchItem({ type: "ADDRESS", value: event.target.value}) 
     }
     const handleContactNumber = (event) => {
-        
+        if(/^\d+$/.test(event.target.value) || event.target.value === "") {
         dispatchItem({ type: "CONTACTNUMBER", value: event.target.value}) 
+        }
     }
     const handleAllergies = (event) => {
         
@@ -235,7 +236,9 @@ const CreateAccCard = () => {
 
     return (
         <div>
-            <form className="mt-6 font-MT" onSubmit={(e)=> { e.preventDefault() }}>
+            <form className="mt-6 font-MT" onSubmit={(e)=> { e.preventDefault()
+            
+            }}>
 
             <span className="flex justify-between">
                 <span className="mr-4">
