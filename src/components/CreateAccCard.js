@@ -236,7 +236,7 @@ const CreateAccCard = () => {
 
     return (
         <div>
-            <form className="mt-6 font-MT" onSubmit={(e)=> { e.preventDefault()
+            <form className="mt-4 font-MT" onSubmit={(e)=> { e.preventDefault()
             
             }}>
 
@@ -253,9 +253,15 @@ const CreateAccCard = () => {
 
             </span>
                
-                <span>
+                <span className="flex justify-between mt-2">
+                <span className="mr-4">
                 <label className="block mt-2 font-MT text-sm text-gray-700">Email</label>
                     <input type="email" onChange={handleEmail} value={entry.email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                </span>
+                <span>
+                <label className="block mt-2 font-MT text-sm text-gray-700">Contact Number</label>
+                    <input type="text" onChange={handleContactNumber} value={entry.contactNumber} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                </span>
                 </span>
 
                 <span className=''>
@@ -305,10 +311,7 @@ const CreateAccCard = () => {
                 <input type="text" onChange={handleAddress} value={entry.address} name="address" id="address" placeholder="Street 23, Burlington Road, #01-174, S410897" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                 </span>
 
-                <span>
-                <label className="block mt-2 font-MT text-sm text-gray-700">Contact Number</label>
-                    <input type="text" onChange={handleContactNumber} value={entry.contactNumber} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
-                </span>
+               
 
                 <span className="flex justify-between mt-4">
                     <span className="mr-4">

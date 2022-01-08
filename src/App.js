@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route, Navigate} from "react-router-dom"
+import {Routes, Route, Navigate, useNavigate} from "react-router-dom"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
@@ -31,6 +31,8 @@ function App() {
     {/* Create Error Page to show forbidden or unauthorised */}
     {loggedIn?<Route path="/account" element={<AccountsPage/>} />:""}
     {loggedIn?<Route path="/myapp" element={<MyAppPage/>} />:""}
+    {!loggedIn?<Route path="/account" element={<LoginPage/>} />:""}
+    {!loggedIn?<Route path="/myapp" element={<LoginPage/>} />:""}
    
     </Routes>
     
