@@ -6,10 +6,12 @@ import addButton from '../addButton.svg'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
 import EditDepModal from './EditDepModal'
 import EditUserModal from './EditUserModal'
+import AddDepModal from './AddDepModal'
 
 const AccountsPage = () => {
     const [editDependency, setEditDependency] = useState(false)
     const [editUser, setEditUser] = useState(false)
+    const [addDep, setAddDep] = useState(false)
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
@@ -41,6 +43,7 @@ const AccountsPage = () => {
     
     return (
         <div >
+            {addDep?<AddDepModal setAddDep={setAddDep}/>: ""}
             {editUser?<EditUserModal setEditUser={setEditUser}/>:""}
             {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency}/>:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
@@ -51,7 +54,7 @@ const AccountsPage = () => {
            <UserDetails name={name} gender={gender} DOB={DOB} address={address} insuranceID={insuranceID} allergies={allergies} editUser={editUser} setEditUser={setEditUser} />
 
            <hr className="mx-28"/>
-           <div className="flex ">
+           <div className="flex cursor-pointer" onClick={()=>{setAddDep(true)}} >
            {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependency</p>:""}
            {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
            </div>

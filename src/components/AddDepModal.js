@@ -1,6 +1,7 @@
 import React from 'react'
+import bluelogo from "../bluelogo.svg"
 
-const AddDepModal = () => {
+const AddDepModal = ({setAddDep}) => {
     return (
         <div className="">
         <div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -13,7 +14,7 @@ const AddDepModal = () => {
             <span className="font-MT text-blue-400 font-semibold">
                 <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
                 
-                <p>Edit user details</p>
+                <p>Add dependency</p>
             </span>
 
            
@@ -58,7 +59,7 @@ const AddDepModal = () => {
 
         <span className="flex justify-between">
         <button className="w-full block mr-2 bg-white hover:bg-gray-200 focus:bg-gray-300 text-gray-400 font-semibold rounded-full font-MT
-            px-4 py-3 mt-6" onClick={()=>setEditDependency(false)}>Cancel</button>
+            px-4 py-3 mt-6" onClick={()=>setAddDep(false)}>Cancel</button>
 
              <button type="submit" className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
             px-4 py-3 mt-6">Save</button>
