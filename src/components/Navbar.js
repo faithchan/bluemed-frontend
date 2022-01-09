@@ -11,10 +11,24 @@ const Navbar = () => {
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
 
-    const handleLogOut = () => {
-        setLoggedIn(false);
-        setAdmin(false);
-        setUserID(false);
+    const handleLogOut = async() => {
+        try{
+            const responseLogout = await fetch (`https://bluemed-backend.herokuapp.com/session/`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+            });
+            const logoutDetails = responseLogout;
+            setLoggedIn(false);
+            setAdmin(false);
+            setUserID(false);
+            console.log(logoutDetails)
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
     }
 
     return (

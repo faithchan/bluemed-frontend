@@ -1,7 +1,9 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const CreateAccCard = () => {
-
+    const navigate = useNavigate();
+    const [errorSource, setErrorSource] = useState(false)
     const regexEmailCheck = (emailTest) => {
         const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$/i
         return regexEmail.test(emailTest)
@@ -155,21 +157,12 @@ const CreateAccCard = () => {
         && entry.DOB !== "" && entry.gender !== "" && entry.address !== "" && entry.contactNumber!== "") {
             console.log("submitting")
 
-            // const date = new Date(Date.parse(entry.DOB).toLocaleDateString(
-            //     'en-UK', 
-            //     {
-            //       day: '2-digit',
-            //       month: '2-digit',
-            //       year: 'numeric'
-            //     }
-            // ))
             const bodySend = JSON.stringify(
                 {
                 "DOB": new Date(Date.parse(entry.DOB)).toLocaleDateString("en-GB"),
                 "name": entry.name,
                 "NRIC": entry.NRIC,
                 "email": entry.email,
-                //hash the password
                 "password": entry.password,
                 "gender": entry.gender,
                 "address": entry.address,
@@ -179,7 +172,6 @@ const CreateAccCard = () => {
                 "img": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                 }
             )
-            console.log(bodySend)
             //check if email and nric are currently used
             try{
                 const responseEmail = await fetch (`https://bluemed-backend.herokuapp.com/user/email/${entry.email}`,
@@ -198,12 +190,17 @@ const CreateAccCard = () => {
                       },
                 }
                 );
-                if (responseNRIC.ok) {
-                    console.log("nric is already in use")
-                }
-                if (responseEmail.ok) {
+                if (responseEmail.ok && responseNRIC.ok) {
+                    console.log("email and NRIC is already in use")
+                    setErrorSource("NRIC and email")
+                }else if (responseEmail.ok) {
                     console.log("email is already in use")
+                    setErrorSource("Email")
+                }else if (responseNRIC.ok) {
+                    console.log("nric is already in use")
+                    setErrorSource("NRIC")
                 }
+
                 if (!responseEmail.ok && !responseNRIC.ok) {
                     console.log("Good to go, no used NRIC or email found")
                     try {
@@ -222,6 +219,7 @@ const CreateAccCard = () => {
                     catch(error){
                         console.log("error>>>",error)
                     }
+                    navigate("/login")
                 }
             }
             catch(error){
@@ -236,7 +234,7 @@ const CreateAccCard = () => {
 
     return (
         <div>
-            <form className="mt-4 font-MT" onSubmit={(e)=> { e.preventDefault()
+            <form className="mt-2 font-MT" onFocus={()=> {setErrorSource(false)}} onSubmit={(e)=> { e.preventDefault()
             
             }}>
 
@@ -330,6 +328,19 @@ const CreateAccCard = () => {
                 <button type="submit" onClick={handleSubmit} className="w-full block bg-blue-400 hover:bg-blue-450 focus:bg-blue-400 text-white font-semibold rounded-full font-MT
                     px-4 py-3 mt-6" >Create account</button>
 </form> 
+
+{errorSource?
+      <div role="alert">
+          <div className="bg-red text-white font-bold rounded-t px-4 py-2 mt-2">
+            Error
+          </div>
+          <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0">
+            <p>{`${errorSource} already in use`}</p>
+          </div>
+        </div>:
+        <div className="mt-28">
+            </div>}
+            
         </div>
     )
 }

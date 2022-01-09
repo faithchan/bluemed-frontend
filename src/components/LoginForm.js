@@ -62,12 +62,12 @@ const LoginForm = () => {
       if(loginDetails.role === "admin") {
         setUserID(loginDetails.doctorID)
         setAdmin(true)
-        navigate('/account')
       }
       else {
         setUserID(loginDetails.patientID)
         setAdmin(false)
       }
+      navigate('/account')
   }
   catch(error){
       console.log("error>>>",error)
@@ -90,24 +90,12 @@ const LoginForm = () => {
 
     <div className="w-full h-100">
 
-    {failedLogin?
-      <div role="alert">
-          <div className="bg-red text-white font-bold rounded-t px-4 py-2">
-            Login Failed
-          </div>
-          <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-6">
-            <p>Please enter a valid email and password</p>
-          </div>
-        </div>:
-        <div className="mt-28">
-            </div>}
-
       <h1 className="text-center text-2xl md:text-3xl font-semibold font-MT ">Welcome Back!</h1>
 
       <form className="mt-6" onSubmit={handleSubmit}>
         <span >
           <label className="block font-MT text-sm text-gray-700">Email:</label>
-          <input type="email" name="user" id="user" placeholder="" value={entry.email} onChange={handleEmail} onClick={()=>setFailedLogin(false)} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
+          <input type="email" name="user" id="user" placeholder="" value={entry.email} onChange={handleEmail} onClick={()=>setFailedLogin(false)} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
         </span>
 
         <span >
@@ -124,6 +112,18 @@ const LoginForm = () => {
               px-4 py-3 mt-6">Login</button>
 
       </form>
+
+      {failedLogin?
+      <div role="alert">
+          <div className="bg-red text-white font-bold rounded-t px-4 py-2 mt-4">
+            Login Failed
+          </div>
+          <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0">
+            <p>Please enter a valid email and password</p>
+          </div>
+        </div>:
+        <div className="mt-28">
+            </div>}
 
       <hr className="mt-6  border-gray-300 w-full" />
 
