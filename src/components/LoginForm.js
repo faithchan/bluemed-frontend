@@ -60,6 +60,7 @@ const LoginForm = () => {
       if(loginDetails.role === "admin") {
         setUserID(loginDetails.doctorID)
         setAdmin(true)
+        navigate('/account')
       }
       else {
         setUserID(loginDetails.patientID)
