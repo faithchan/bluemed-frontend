@@ -33,10 +33,11 @@ const AccountsPage = () => {
     }   
 
     useEffect(() => {
-    
-        getPatientDetails()
+        if(userID) {
+            getPatientDetails()
+        }
     }
-    , [])
+    , [userID])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
     // console.log(dependents)
