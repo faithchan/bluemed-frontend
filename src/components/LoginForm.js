@@ -1,10 +1,76 @@
-import React from 'react'
+import {useReducer, useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
-
+import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
 
 const LoginForm = () => {
   let navigate = useNavigate();
+  const {loggedIn, setLoggedIn} =  useContext(LoginContext)
+  const {admin, setAdmin} =  useContext(adminContext)
+  const {userID, setUserID} =  useContext(userIDContext)
+
+  const itemReducer = (state, action) => {
+    switch (action.type) {
+        case "EMAIL":
+            return {
+                ...state,
+                email: action.value,
+
+            }
+        case "PASSWORD":
+            return {
+                ...state,
+                password: action.value,
+
+            }
+        default:
+            return state
+    }
+}
+
+  const [entry, dispatchItem] = useReducer(itemReducer, {
+      email: "",
+      password: "",
+  })
+
+  const handleEmail = (event) => {
+        
+    dispatchItem({ type: "EMAIL", value: event.target.value.toLowerCase()}) 
+}
+  const handlePassword = (event) => {
+      
+      dispatchItem({ type: "PASSWORD", value: event.target.value}) 
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(entry)
+    try{
+      const responseLogin = await fetch (`https://bluemed-backend.herokuapp.com/session/`,
+      {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entry)
+      });
+      const loginDetails = await responseLogin.json();
+      console.log(loginDetails)
+      setLoggedIn(true)
+      if(loginDetails.role === "admin") {
+        setUserID(loginDetails.doctorID)
+        setAdmin(true)
+      }
+      else {
+        setUserID(loginDetails.patientID)
+        setAdmin(false)
+      }
+  }
+  catch(error){
+      console.log("error>>>",error)
+  }
+  }
+
     return (
      
 		<div className="flex flex-col md:flex-row h-screen items-center">
@@ -21,15 +87,15 @@ const LoginForm = () => {
 
       <h1 className="text-center text-2xl md:text-3xl font-semibold font-MT ">Welcome Back!</h1>
 
-      <form className="mt-6" action="/services" method="POST">
+      <form className="mt-6" onSubmit={handleSubmit}>
         <span >
           <label className="block font-MT text-sm text-gray-700">Email:</label>
-          <input type="email" name="user" id="user" placeholder="" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
+          <input type="email" name="user" id="user" placeholder="" value={entry.email} onChange={handleEmail} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
         </span>
 
         <span >
           <label className="block font-MT text-sm text-gray-700 mt-4">Password:</label>
-          <input type="password" name="password" id="password" placeholder="" minlength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+          <input type="password" name="password" id="password" placeholder="" value={entry.password} onChange={handlePassword} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required />
         </span>
 

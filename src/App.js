@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 import {LoginContext, adminContext, userIDContext} from './global/Context'
 
 function App() {
-  const[loggedIn, setLoggedIn]= useState(true)
+  const[loggedIn, setLoggedIn]= useState(false)
   const[userID, setUserID]= useState('61d8fb4d770c3094270135f7')
   const[admin, setAdmin]= useState(false)
   return (
