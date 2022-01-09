@@ -1,7 +1,42 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import bluelogo from "../bluelogo.svg"
+import axios from 'axios'
+import { userIDContext } from '../global/Context';
 
-const EditDepModal = ({setEditDependency,editDependency}) => {
+const EditDepModal = ({setEditDependency,editDependency,patientDetails, setPatientDetails}) => {
+    const {userID, setUserID} =  useContext(userIDContext)
+const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
+const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
+
+
+    const [userData, setUserData] = useState({
+        name:name,
+        DOB:DOB,
+        address:address,
+        insuranceID:insuranceID,
+        allergies:allergies,
+        NRIC: NRIC,
+        gender: gender,
+        dependents: dependents,
+        contactNumber: contactNumber
+    })
+    console.log(userData)
+    
+    
+    function handleChange(e){
+    const newData={...userData}
+    newData[e.target.id]= e.target.value
+    setUserData(newData)
+    console.log(newData)
+    }
+    
+    function submit(e){
+        e.preventDefault();
+        setEditDependency(false);
+    axios.put(editPatientUrl, userData).then((userData)=>console.log(userData))
+    .catch((err)=>console.log(err))
+    setPatientDetails(userData)
+    }
     return (
         
             <div className="">

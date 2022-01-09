@@ -11,7 +11,7 @@ import AddDepModal from './AddDepModal'
 const AccountsPage = () => {
     const [editDependency, setEditDependency] = useState(false)
     const [editUser, setEditUser] = useState(false)
-    const [addDep, setAddDep] = useState(false)
+    const [addDepBtn, setAddDepBtn] = useState(false)
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
@@ -33,10 +33,11 @@ const AccountsPage = () => {
     }   
 
     useEffect(() => {
-    
-        getPatientDetails()
+        if(userID) {
+            getPatientDetails()
+        }
     }
-    , [])
+    , [userID])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
     // console.log(dependents)
@@ -45,9 +46,9 @@ const AccountsPage = () => {
     
     return (
         <div >
-            {addDep?<AddDepModal setAddDep={setAddDep}/>: ""}
+            {addDepBtn?<AddDepModal setAddDepBtn={setAddDepBtn}patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>: ""}
             {editUser?<EditUserModal setEditUser={setEditUser} patientDetails={patientDetails} setPatientDetails={setPatientDetails} />:""}
-            {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency}/>:""}
+            {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency} patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
            <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Account Details</p>
@@ -56,7 +57,7 @@ const AccountsPage = () => {
            <UserDetails name={name} gender={gender} DOB={DOB} address={address} insuranceID={insuranceID} allergies={allergies} editUser={editUser} setEditUser={setEditUser} />
 
            <hr className="mx-28"/>
-           <div className="flex cursor-pointer" onClick={()=>{setAddDep(true)}} >
+           <div className="flex cursor-pointer" onClick={()=>{setAddDepBtn(true)}} >
            {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependency</p>:""}
            {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
            </div>
