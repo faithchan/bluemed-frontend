@@ -4,7 +4,7 @@ import axios from 'axios'
 import { userIDContext } from '../global/Context';
 
 
-const EditUserModal = ({setEditUser, patientDetails}) => {
+const EditUserModal = ({setEditUser, patientDetails, setPatientDetails}) => {
 const {userID, setUserID} =  useContext(userIDContext)
 const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
 const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
@@ -24,7 +24,6 @@ const [userData, setUserData] = useState({
 console.log(userData)
 
 
-
 function handleChange(e){
 const newData={...userData}
 newData[e.target.id]= e.target.value
@@ -34,9 +33,10 @@ console.log(newData)
 
 function submit(e){
     e.preventDefault();
+    setEditUser(false);
 axios.put(editPatientUrl, userData).then((userData)=>console.log(userData))
 .catch((err)=>console.log(err))
-
+setPatientDetails(userData)
 }
 
     return (
