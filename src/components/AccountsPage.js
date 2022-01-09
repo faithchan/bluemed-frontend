@@ -24,8 +24,10 @@ const AccountsPage = () => {
     const getPatientDetails = async()=>{
         try{
             const response = await fetch (patientDetailsURL);
+            console.log(response)
             const data = await response.json();
             setPatientDetails(data)
+            console.log(data)
             
         }
         catch(error){
@@ -33,12 +35,15 @@ const AccountsPage = () => {
         }
     }   
 
-    useEffect(() => 
+    useEffect(() => {
+        console.log("hello")
         getPatientDetails()
+    }
     , [])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
-
+    // console.log(dependents)
+    // console.log(patientDetails)
   
     
     return (
@@ -59,8 +64,8 @@ const AccountsPage = () => {
            {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
            </div>
          
-
-           {admin?"":<DependencyDetails dependents={dependents} editDependency={editDependency} setEditDependency={setEditDependency}/>}
+            
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} DOB={dep.DOB} NRIC={dep.NRIC} address={dep.address} allergies={dep.allergies} gender={dep.gender} insuranceID={dep.insuranceID} name={dep.name} relation={dep.relation}/>)):""}
       
            
            
