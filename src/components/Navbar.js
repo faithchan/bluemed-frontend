@@ -10,6 +10,27 @@ const Navbar = () => {
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
+
+    const handleLogOut = async() => {
+        try{
+            const responseLogout = await fetch (`https://bluemed-backend.herokuapp.com/session/`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+            });
+            const logoutDetails = responseLogout;
+            setLoggedIn(false);
+            setAdmin(false);
+            setUserID(false);
+            console.log(logoutDetails)
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }
+
     return (
        
        <div className="text-blue-400 font-MT font-semibold">
@@ -20,7 +41,7 @@ const Navbar = () => {
          <li className="mx-10"><Link to="/services">Services</Link></li>
          { !loggedIn ? <li className="mx-10"><Link to="/login">Login</Link></li>: <li className="mx-10"><Link to="/myapp">MyApp</Link></li>}
          { !loggedIn ? "": <li className="mx-10"><Link to="/account"><img src={usericon} alt="Account" className="h-6"/></Link></li>}
-         { loggedIn ? <button className="bg-blue-400 font-semibold hover:bg-blue-450 text-white tracking-widest font-MT ml-10 py-2 px-4 rounded-full text-xs" onClick={()=>{setLoggedIn(false)}}>Log Out</button> : ""}
+         { loggedIn ? <button className="bg-blue-400 font-semibold hover:bg-blue-450 text-white tracking-widest font-MT ml-10 py-2 px-4 rounded-full text-xs" onClick={handleLogOut}>Log Out</button> : ""}
          
      </ul>
      </nav>
