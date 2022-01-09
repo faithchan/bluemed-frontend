@@ -20,12 +20,14 @@ const PastAppCard = () => {
                console.log('error:', err)
            }
           }
-      
+
       useEffect(() => {
   
           appID();
   
         }, []);
+
+        console.log(userID)
   
     return (
         <div>
@@ -33,19 +35,19 @@ const PastAppCard = () => {
 
               <div className="flex justify-between p-6">
               <span className="font-MT font-semibold text-xs leading-loose mr-10">
-                <p>Patient: Sarah Lee</p>
-                <p>Appointment Info: 31/12/2021 at 1200H</p>
-                <p>Doctor: Mohit Dhiman</p>
-                <p>Type: Psychotherapy</p>
-                <p>Notes: Weekly Catch Up 1H Session</p>
+                <p>Patient: {userID.patient} </p>
+                <p>Appointment Info: {userID.appTime}</p>
+                <p>Doctor: {userID.doctor}</p>
+                <p>Type: {userID.type}</p>
+                <p>Notes: {userID.notes}</p>
               </span>
 
               <span className="font-MT font-semibold text-right leading-loose">
               <p className="tracking-wider mb-2">#0001</p>
               <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " >View Receipt</button>
-                <ul className="text-xs flex mt-4">
+                <ul className="text-xs f‹lex mt-4">
                 <li><button className="bg-green rounded-full w-4 h-4 mr-2 " /></li>
-                <p className="text-left">Completed and delivered</p>
+                <p className="text-left">{userID.medicationDelivery}</p>
                 </ul>
               </span>
               </div>
