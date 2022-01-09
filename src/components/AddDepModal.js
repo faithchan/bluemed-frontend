@@ -2,6 +2,8 @@ import React from 'react'
 import bluelogo from "../bluelogo.svg"
 
 const AddDepModal = ({setAddDep}) => {
+
+    
     return (
         <div className="">
         <div class="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -15,9 +17,7 @@ const AddDepModal = ({setAddDep}) => {
                 <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
                 
                 <p>Add dependency</p>
-            </span>
-
-           
+            </span> 
          </span>
 
          <span className="flex  mt-4 justify-between">   
@@ -96,7 +96,7 @@ const AddDepModal = ({setAddDep}) => {
             px-4 py-3 mt-6" onClick={()=>setAddDep(false)}>Cancel</button>
 
              <button type="submit" className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
-            px-4 py-3 mt-6">Save</button>
+            px-4 py-3 mt-6">Add</button>
 
         </span>
        

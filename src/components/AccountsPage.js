@@ -19,16 +19,13 @@ const AccountsPage = () => {
 
 
     const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
-    console.log(patientDetailsURL)
+  
 
     const getPatientDetails = async()=>{
         try{
             const response = await fetch (patientDetailsURL);
-            console.log(response)
             const data = await response.json();
             setPatientDetails(data)
-            console.log(data)
-            
         }
         catch(error){
             console.log("error>>>",error)
@@ -36,7 +33,7 @@ const AccountsPage = () => {
     }   
 
     useEffect(() => {
-        console.log("hello")
+    
         getPatientDetails()
     }
     , [])
@@ -49,7 +46,7 @@ const AccountsPage = () => {
     return (
         <div >
             {addDep?<AddDepModal setAddDep={setAddDep}/>: ""}
-            {editUser?<EditUserModal setEditUser={setEditUser}/>:""}
+            {editUser?<EditUserModal setEditUser={setEditUser} patientDetails={patientDetails} setPatientDetails={setPatientDetails} />:""}
             {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency}/>:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
            <hr className="mx-28"/>
