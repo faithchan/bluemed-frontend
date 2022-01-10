@@ -8,17 +8,41 @@ import LoginPage from "./components/LoginPage"
 import AccountsPage from "./components/AccountsPage"
 import CreateAccountPage from './components/CreateAccountPage';
 import MyAppPage from './components/MyAppPage';
-import React, {useState} from 'react';
-import {LoginContext, adminContext, userIDContext} from './global/Context'
+import React, {useState, useEffect} from 'react';
+import {LoginContext, adminContext, userIDContext, patientData} from './global/Context'
 
 function App() {
   const[loggedIn, setLoggedIn]= useState(true)
   const[userID, setUserID]= useState('61d8fb4d770c3094270135f7')
   const[admin, setAdmin]= useState(false)
+  const[patientDetails, setPatientDetails]= useState({})
+
+  const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
+ 
+  const getPatientDetails = async()=>{
+    try{
+        const response = await fetch (patientDetailsURL);
+        const data = await response.json();
+        setPatientDetails(data)
+    }
+    catch(error){
+        console.log("error>>>",error)
+    }
+}   
+
+useEffect(() => {
+  if(userID) {
+      getPatientDetails()
+  }
+}
+, [userID])
+
+
   return (
     <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
       <userIDContext.Provider value={{userID, setUserID}}>
       <adminContext.Provider  value={{admin, setAdmin}}>
+      <patientData.Provider  value={{patientDetails, setPatientDetails}}>
       <header><Navbar /></header>
       <main>
     <Routes>
@@ -39,6 +63,7 @@ function App() {
     
   </main>
   <footer className=""><Footer/></footer>
+  </patientData.Provider>
   </adminContext.Provider>
   </userIDContext.Provider>
     </LoginContext.Provider>
