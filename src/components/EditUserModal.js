@@ -26,6 +26,7 @@ console.log(userData)
 
 function handleChange(e){
 const newData={...userData}
+console.log(newData[e.target.id]= e.target.value)
 newData[e.target.id]= e.target.value
 setUserData(newData)
 console.log(newData)

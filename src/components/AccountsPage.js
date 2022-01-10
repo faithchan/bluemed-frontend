@@ -40,9 +40,7 @@ const AccountsPage = () => {
     , [userID])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
-    // console.log(dependents)
-    // console.log(patientDetails)
-  
+
     
     return (
         <div >
@@ -59,11 +57,11 @@ const AccountsPage = () => {
            <hr className="mx-28"/>
            <div className="flex cursor-pointer" onClick={()=>{setAddDepBtn(true)}} >
            {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependency</p>:""}
-           {!admin?<img src={addButton} alt="userimage" className="w-5 ml-4" />:""}
+           {!admin?<img src={addButton} alt="add dependency" className="w-5 ml-4" />:""}
            </div>
          
             
-           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} DOB={dep.DOB} NRIC={dep.NRIC} address={dep.address} allergies={dep.allergies} gender={dep.gender} insuranceID={dep.insuranceID} name={dep.name} relation={dep.relation}/>)):""}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>)):""}
       
            
            
