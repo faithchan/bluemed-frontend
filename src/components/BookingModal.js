@@ -1,12 +1,13 @@
 import React, {useContext, useReducer, useEffect, useState} from 'react'
 
 import bluelogo from "../bluelogo.svg"
-import { LoginContext, adminContext, userIDContext } from '../global/Context';
+import { LoginContext, adminContext, userIDContext, patientData } from '../global/Context';
 
-const BookingModal = ({doctorID, setBookingModal, name, profession, pricing, key}) => {
+const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) => {
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
+    const {patientDetails, setPatientDetails} =  useContext(patientData)
     const [options, setOptions] = useState(false)
     const itemReducer = (state, action) => {
         switch (action.type) {
@@ -63,44 +64,61 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing, key
         dispatchItem({ type: "TIME", value: event.target.value}) 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
         console.log(entry)
         const payload = {
             "patient": userID,
             "doctor": doctorID,
-              "type": profession,
-              "patientNotes": entry.patientNotes,
-              "zoomLink": "www.zoom.com",
-              "appTime": new Date(`${entry.appDateOnly} ${entry.appTimeOnly}`)
-        }
+            "type": profession,
+            "patientNotes": entry.patientNotes,
+            "zoomLink": "www.zoom.com",
+            "appTime": new Date(`${entry.appDateOnly} ${entry.appTimeOnly}`)
+    }
         if (entry.nameIndex !== "0") {
             payload.dependentNRIC = options[entry.nameIndex].NRIC
         }
         console.log(payload)
         setBookingModal(false)
+        try{
+            
+            const schAppResponse = await fetch (`https://bluemed-backend.herokuapp.com/schapp/`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(payload)
+            }
+            );
+            const dataSchApp = await schAppResponse.json();
+            console.log(dataSchApp)
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
     }
 
     const getData = async () => {
         try{
             
-            const responseUser = await fetch (`https://bluemed-backend.herokuapp.com/patient/${userID}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                  },
-            }
-            );
-            const dataUser = await responseUser.json();
+            // const responseUser = await fetch (`https://bluemed-backend.herokuapp.com/patient/${userID}`,
+            // {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //       },
+            // }
+            // );
+            // const dataUser = await responseUser.json();
             const arrayPatientOrDependents = [
                 {
-                    NRIC: dataUser.NRIC,
-                    Patientname: dataUser.name
+                    NRIC: patientDetails.NRIC,
+                    Patientname: patientDetails.name
                 }
             ]
-            console.log(dataUser)
-            dataUser.dependents.map((element)=>{
+            console.log(patientDetails)
+            patientDetails.dependents.map((element)=>{
                 console.log(element)
                 arrayPatientOrDependents.push({
                     NRIC: element.NRIC,
@@ -114,6 +132,8 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing, key
             console.log("error>>>",error)
         }
     }
+
+    //console.log(patientDetails, userID)
 
     useEffect(()=> {
         console.log("use effect")
