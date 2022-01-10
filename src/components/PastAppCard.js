@@ -2,24 +2,22 @@ import React from 'react'
 import { useEffect, useContext, useState } from 'react'
 import { LoginContext, adminContext, userIDContext } from '../global/Context'
 
-const PastAppCard = ({patient, doctor, type, patientNotes, appTime, cost, paid, medicationDelivery, key}) => {
+const PastAppCard = ({patient, doctor, type, doctorNotes, patientNotes, appTime, cost, paid, medicationDelivery, key}) => {
 
   const {pastAppDetails, setPastAppDetails} = useState('')
   const {userID, setUserID} =  useContext(userIDContext)
 
-  console.log(patient)
- 
     return (
         <div>
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
               <span className="font-MT font-semibold text-xs leading-loose mr-10">
-                <p>Patient: {patient.name} </p>
-                <p>Appointment Info: blah</p>
-                <p>Doctor: dr</p>
-                <p>Type: Was</p>
-                <p>Notes: was</p>
+                <p>Patient: {patient} </p>
+                <p>Appointment Info: {appTime}</p>
+                <p>Doctor: {doctor}</p>
+                <p>Type: {type}</p>
+                <p>Doctor Notes: {doctorNotes}</p>
               </span>
 
               <span className="font-MT font-semibold text-right leading-loose">
@@ -27,7 +25,7 @@ const PastAppCard = ({patient, doctor, type, patientNotes, appTime, cost, paid, 
               <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " >View Receipt</button>
                 <ul className="text-xs flex mt-4">
                 <li><button className="bg-green rounded-full w-4 h-4 mr-2 " /></li>
-                <p className="text-left">deliver</p>
+                <p className="text-left">{medicationDelivery}</p>
                 </ul>
               </span>
               </div>

@@ -37,9 +37,6 @@ const MyAppPage = () => {
   
         }, []);
 
-        console.log(pastApp) 
-
-
     return (
         <div>
          <hr className="mx-28"/>
@@ -52,18 +49,18 @@ const MyAppPage = () => {
             </div>:""}
 
             {pastButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            {pastApp.map((details) => {
+            {pastApp.map((details) => 
             <PastAppCard 
                 key = {details.id}
-                patient = {details.patient} 
-                doctor = {details.doctor} 
+                patient = {details.patient.name} 
+                doctor = {details.doctor.name} 
                 type = {details.type} 
                 patientNotes = {details.patientNotes} 
                 appTime = {details.appTime} 
                 cost = {details.cost} 
                 paid = {details.paid} 
-                medicationDelivery = {details.medicationDelivery} />})}
-                {console.log(details)}
+                medicationDelivery = {details.medicationDelivery} />
+                )}
             <PastAppCard />
             </div>:""}
 
