@@ -5,27 +5,39 @@ import EditDepModal from './EditDepModal'
 import deleteButton from '../deleteButton.svg'
 import {userIDContext } from '../global/Context'
 
-const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails}) => {
+const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails, setPatientDetails}) => {
     const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
     const {userID, setUserID} =  useContext(userIDContext)
+    const [depDetails, setDepDetails] =useState({})
+    const[userData, setUserData] = useState({name:name,
+        DOB:DOB,
+        address:address,
+        insuranceID:insuranceID,
+        allergies:allergies,
+        NRIC: NRIC,
+        gender: gender,
+        dependents:dependents,
+        contactNumber: contactNumber})
     const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
 
 
-const deleteDepHandler = ()=>{
-    let selectedDep =  dependents.findIndex((dep)=>dep.name === depName)
-    dependents.splice(selectedDep,1)
+const deleteDepHandler = (e)=>{
+    e.preventDefault();
+    const selectedDep =  dependents.findIndex((dep)=>dep.name === depName)
+   let newDependents=dependents.splice(selectedDep,1)
+    console.log(newDependents)
     console.log(dependents)
-//     setUserData({name:name,
-//         DOB:DOB,
-//         address:address,
-//         insuranceID:insuranceID,
-//         allergies:allergies,
-//         NRIC: NRIC,
-//         gender: gender,
-//         dependents: dependents,
-//         contactNumber: contactNumber})
-//         axios.put(editPatientUrl, userData).then((userData)=>console.log(userData))
-// .catch((err)=>console.log(err))
+    console.log(dependents.length)
+    // console.log(selectedDep)
+    setPatientDetails(userData)
+    console.log(patientDetails)
+        
+       
+   
+        console.log(userData)
+        axios.put(editPatientUrl, userData).then((userData)=>console.log(userData))
+.catch((err)=>console.log(err))
+
 }
 
 
@@ -34,8 +46,8 @@ const deleteDepHandler = ()=>{
         <div>
             <div className="mx-28 mb-8 ">
            <div className="bg-white rounded-lg p-6 drop-shadow-lg">
-               <div className="flex justify-end cursor-pointer" onClick={deleteDepHandler}>
-               <img src={deleteButton} alt="delete" className="w-5 opacity-60 " />
+               <div className="flex justify-end " >
+               <img src={deleteButton} alt="delete" className="w-5 opacity-60 cursor-pointer" onClick={deleteDepHandler} />
                </div>
            
           

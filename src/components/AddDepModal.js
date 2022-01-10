@@ -50,6 +50,7 @@ console.log(addDep)
         setAddDepBtn(false)
     axios.put(editPatientUrl, addDep).then((res)=>console.log(res))
 .catch((err)=>console.log(err))
+setPatientDetails(addDep)
 }
 
     return (

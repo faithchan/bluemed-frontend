@@ -46,7 +46,7 @@ const AccountsPage = () => {
         <div >
             {addDepBtn?<AddDepModal setAddDepBtn={setAddDepBtn}patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>: ""}
             {editUser?<EditUserModal setEditUser={setEditUser} patientDetails={patientDetails} setPatientDetails={setPatientDetails} />:""}
-            {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency} patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>:""}
+            {editDependency?<EditDepModal setEditDependency={setEditDependency} editDependency={editDependency} patientDetails={patientDetails} setPatientDetails={setPatientDetails} />:""}
            {/* //check role of user const [role, setRole] = useState('')  */}
            <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">Account Details</p>
@@ -61,7 +61,7 @@ const AccountsPage = () => {
            </div>
          
             
-           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>)):""}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails}/>)):""}
       
            
            

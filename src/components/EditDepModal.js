@@ -59,12 +59,12 @@ const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
                      <span className="flex  mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" for="birthdate">Name</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="editname" name="name" required/>
+                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="editname"  required/>
                     </span>
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" for="appt">DOB</label>
-                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="date" id="DOB" name="DOB"
+                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="date" id="DOB" 
                     min="09:00" max="18:00" required />
                     </span>
                     </span>
@@ -72,20 +72,20 @@ const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
                     <span className="flex  mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" for="birthdate">Address</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="appdate" name="name" required/>
+                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="appdate"required/>
                     </span>
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" for="appt">Insurance ID</label>
-                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="text" id="apptime" name="DOB"
-                    min="09:00" max="18:00" required />
+                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" type="text" id="apptime" 
+                    required />
                     </span>
                     </span>
 
                     <span className="flex mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" for="birthdate">Drug allergies</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="appdate" name="name" required/>
+                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="text" id="appdate" required/>
                     </span>
                     </span>
 
