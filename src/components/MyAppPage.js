@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import AppointmentCard from './AppointmentCard'
 import AppList from './AppList'
 import PastAppCard from './PastAppCard'
@@ -11,10 +11,33 @@ const MyAppPage = () => {
     
     const[schedButton, setSchedButton] =useState(true)
     const[pastButton, setPastButton] =useState(false)
-    const[pastApp, setPastApp]=useState('')
+    const[pastApp, setPastApp]=useState([])
     const[schedApp, setSchedApp]=useState('')
-//useEffect fetch api from sched and past app then pass data down to the individual appointment cards
+    //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
+      //fetching data for pastApp URL
+      const pastAppURL = `https://bluemed-backend.herokuapp.com/pastApp/patients/${userID}`
+
+      const appID = async() => {
+          try {
+              const response = await fetch (pastAppURL);
+              console.log(response)
+              const data = await response.json(); 
+              console.log(data)
+              setPastApp(data)
+           }
+           catch(err) {
+               console.log('error:', err)
+           }
+          }
+
+      useEffect(() => {
+  
+          appID();
+  
+        }, []);
+
+        console.log(pastApp) 
 
 
     return (
@@ -29,7 +52,18 @@ const MyAppPage = () => {
             </div>:""}
 
             {pastButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            <PastAppCard />
+            {pastApp.map((details) => {
+            <PastAppCard 
+                key = {details.id}
+                patient = {details.patient} 
+                doctor = {details.doctor} 
+                type = {details.type} 
+                patientNotes = {details.patientNotes} 
+                appTime = {details.appTime} 
+                cost = {details.cost} 
+                paid = {details.paid} 
+                medicationDelivery = {details.medicationDelivery} />})}
+                {console.log(details)}
             <PastAppCard />
             </div>:""}
 
