@@ -5,10 +5,11 @@ import { userIDContext } from '../global/Context';
 
 const AddDepModal = ({setAddDepBtn,setPatientDetails, patientDetails}) => {
     const {userID, setUserID} =  useContext(userIDContext)
-const{NRIC, gender, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails.dependents
+const{NRIC, gender, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
 const {dependents} =patientDetails
 const [depDetails, setDepDetails] =useState({})
 const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
+
 const [addDep, setAddDep]=useState({
     name:name,
     DOB:DOB,
@@ -27,27 +28,27 @@ function handleChange(e){
    const newDepData = {...depDetails}
    newDepData[e.target.id]=e.target.value
    setDepDetails(newDepData)
-   console.log(newDepData)
+   setAddDep({
+    name:name,
+    DOB:DOB,
+    address:address,
+    insuranceID:insuranceID,
+    allergies:allergies,
+    NRIC: NRIC,
+    gender: gender,
+    dependents: [...dependents, newDepData],
+    contactNumber: contactNumber
+})
 
 }
-console.log(depDetails)
 
+console.log(addDep)
 
 
     function submit(e){
         e.preventDefault();
         setAddDepBtn(false)
-        setAddDep({name:name,
-            DOB:DOB,
-            address:address,
-            insuranceID:insuranceID,
-            allergies:allergies,
-            NRIC: NRIC,
-            gender: gender,
-            dependents: [...dependents, depDetails],
-            contactNumber: contactNumber})
-            setPatientDetails(addDep)
-    axios.put(editPatientUrl, addDep).then((addDep)=>console.log(addDep))
+    axios.put(editPatientUrl, addDep).then((res)=>console.log(res))
 .catch((err)=>console.log(err))
 }
 
@@ -101,8 +102,8 @@ console.log(depDetails)
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">Insurance ID</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text"
-        min="09:00" max="18:00" required />
+        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID"
+        required />
         </span>
         </span>
 
