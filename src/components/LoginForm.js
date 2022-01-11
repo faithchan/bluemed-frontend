@@ -60,7 +60,7 @@ const LoginForm = () => {
       setLoggedIn(true)
       setFailedLogin(false)
       if(loginDetails.role === "admin") {
-        setUserID(loginDetails.doctorID)
+        setUserID(loginDetails.patientID)
         setAdmin(true)
       }
       else {
