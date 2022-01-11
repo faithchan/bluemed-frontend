@@ -149,7 +149,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
                 <div className="w-full max-w-lg p-5 absolute inset-x-0 z-10  mx-auto my-auto rounded-xl shadow-lg  bg-gray-100 ">
                 <div className="">
        
-                <form onSubmit={handleSubmit}className="m-4 font-MT" action="#" method="POST">
+                <form onSubmit={handleSubmit}className="m-4 font-MT" >
 
                     <span className="flex justify-between mb-2 z-20">
                         <span className="font-MT text-blue-400 font-semibold">
