@@ -3,7 +3,7 @@ import bluelogo from "../bluelogo.svg"
 import axios from 'axios'
 import { userIDContext } from '../global/Context';
 
-const EditDepModal = ({setEditDepData, editDepData, EditDependency,editDependency,patientDetails, setPatientDetails, setEditDependency}) => {
+const EditDepModal = ({editDepData, patientDetails, setPatientDetails, setEditDependency}) => {
     const {userID, setUserID} =  useContext(userIDContext)
 const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
 const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
@@ -124,10 +124,6 @@ const[depData, setDepData]=useState({
                     <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="relation" value={depData.relation}
                     /></span>
                     </span>
-
-    
-                    
-    
     
                     <span className="flex justify-between">
                     <button className="w-full block mr-2 bg-white hover:bg-gray-200 focus:bg-gray-300 text-gray-400 font-semibold rounded-full font-MT
