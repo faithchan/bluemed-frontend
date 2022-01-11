@@ -40,15 +40,15 @@ const[depData, setDepData]=useState({
     newData[e.target.id]= e.target.value
     console.log(newData)
     setDepData(newData)
+    const selectedDep =  dependents.findIndex((dep)=>dep.NRIC === depData.NRIC)
+        console.log(selectedDep)
+        dependents[selectedDep] = depData
 
     }
     
     function submit(e){
         e.preventDefault();
         
-        const selectedDep =  dependents.findIndex((dep)=>dep._NRIC === depData._NRIC)
-        dependents[selectedDep] = depData
-        // console.log(selectedDep)
         // console.log(dependents)
         setUserData({
             name:name,
