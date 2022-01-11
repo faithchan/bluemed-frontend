@@ -15,7 +15,7 @@ function App() {
   const[loggedIn, setLoggedIn]= useState(true)
   const[userID, setUserID]= useState('61d8fb4d770c3094270135f7')
   const[admin, setAdmin]= useState(false)
-  const[patientDetails, setPatientDetails]= useState({})
+  const[patientDetails, setPatientDetails]= useState(false)
 
   const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
  
@@ -37,6 +37,7 @@ useEffect(() => {
 }
 , [userID])
 
+console.log(patientDetails)
 
   return (
     <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
