@@ -13,6 +13,7 @@ const MyAppPage = () => {
     const[pastButton, setPastButton] =useState(false)
     const[pastApp, setPastApp]=useState([])
     const[schedApp, setSchedApp]=useState([])
+
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
       //fetching data for pastApp URL
@@ -43,9 +44,9 @@ const MyAppPage = () => {
         const schAppID = async() => {
             try {
                 const response = await fetch(schAppURL); 
-                console.log(response)
+                // console.log(response)
                 const data = await response.json(); 
-                console.log(data);
+                // console.log(data);
                 setSchedApp(data);
             }
             catch(err) {
@@ -71,10 +72,13 @@ const MyAppPage = () => {
             key = {detail.id}
             patient = {detail.patient.name}
             doctor = {detail.doctor.name}
+            attendee = {detail.attendee}
             type = {detail.type}
             patientNotes = {detail.patientNotes} 
             appTime = {detail.appTime} 
             zoomLink = {detail.zoomLink}
+            schID = {detail._id}
+            arr = {schedApp}
             />
             )}
             <AppointmentCard />
@@ -86,6 +90,7 @@ const MyAppPage = () => {
                 key = {details.id}
                 patient = {details.patient.name} 
                 doctor = {details.doctor.name} 
+                attendee = {details.attendee}
                 type = {details.type} 
                 patientNotes = {details.patientNotes} 
                 doctorNotes = {details.doctorNotes}
