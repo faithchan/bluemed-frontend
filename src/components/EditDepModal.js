@@ -92,12 +92,12 @@ const[depData, setDepData]=useState({
                      <span className="flex  mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" >Name</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" value={depData.name} required/>
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" value={depData.name} required/>
                     </span>
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" >DOB</label>
-                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} value={depData.DOB} type="date" id="DOB" 
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} value={depData.DOB} type="date" id="DOB" 
                     required />
                     </span>
                     </span>
@@ -105,12 +105,12 @@ const[depData, setDepData]=useState({
                     <span className="flex  mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700">Address</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" value={depData.address} id="address" required/>
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" value={depData.address} id="address" required/>
                     </span>
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" >Insurance ID</label>
-                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" value={depData.insuranceID}
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" value={depData.insuranceID}
                     required />
                     </span>
                     </span>
@@ -118,12 +118,12 @@ const[depData, setDepData]=useState({
                     <span className="flex mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700">Drug allergies</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" value={depData.allergies} required/>
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" value={depData.allergies} required/>
                     </span>
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" >Relationship</label>
-                    <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="relation" value={depData.relation}
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="relation" value={depData.relation}
                     /></span>
                     </span>
     

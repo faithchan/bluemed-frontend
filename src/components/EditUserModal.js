@@ -51,7 +51,7 @@ setPatientDetails(userData)
         <span className="flex justify-between mb-2 z-20">
             <span className="font-MT text-blue-400 font-semibold">
                 <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
-                <p>Edit dependency details</p>
+                <p>Edit user details</p>
             </span>
          </span>
 
