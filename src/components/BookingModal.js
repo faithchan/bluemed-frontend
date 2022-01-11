@@ -168,7 +168,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
                     <span className="">
                         <span className="mr-4">
                         <label className="block font-MT text-sm text-gray-700 mb-2">Patient's Name</label>
-                        <select name="patient" id="patient" onChange={handleNameIndex} className="w-full p-2 rounded-lg" required>
+                        <select name="patient" id="patient" onChange={handleNameIndex} className="w-full px-3 py-2 rounded-lg" required>
                         {/* <option value="name">Sarah Coleman</option>
                         <option value="name1">Dany Bailey</option> */}
                         {(options? options.map((element, index)=> {
