@@ -50,6 +50,7 @@ console.log(addDep)
         setAddDepBtn(false)
     axios.put(editPatientUrl, addDep).then((res)=>console.log(res))
 .catch((err)=>console.log(err))
+setPatientDetails(addDep)
 }
 
     return (
@@ -118,17 +119,17 @@ console.log(addDep)
 
                     <span className="flex mt-3">   
                     <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="male" id="gender" />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" />
                             <div className="title px-2">M</div>
                         </label>
 
                         <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="female" id="gender"  />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Female" id="gender"  />
                         <div className="title px-2">F</div>
                         </label>
 
                         <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="others" id="gender"  />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Others" id="gender"  />
                         <div className="title px-2">Others</div>
                         </label>
                         </span> 

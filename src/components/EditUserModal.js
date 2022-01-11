@@ -26,6 +26,7 @@ console.log(userData)
 
 function handleChange(e){
 const newData={...userData}
+console.log(newData[e.target.id]= e.target.value)
 newData[e.target.id]= e.target.value
 setUserData(newData)
 console.log(newData)
@@ -42,7 +43,7 @@ setPatientDetails(userData)
     return (
         <div className="">
         <div className="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
-        <div className="w-full max-w-lg p-5 absolute inset-x-0 z-10  mx-auto my-auto rounded-xl shadow-lg  bg-gray-100 ">
+        <div className="w-full max-w-lg p-5 absolute inset-x-0 z-10  m-auto rounded-xl shadow-lg  bg-gray-100 ">
         <div className="">
 
 
