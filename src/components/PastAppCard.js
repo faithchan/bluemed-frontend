@@ -1,10 +1,9 @@
 import React from 'react'
-import { useEffect, useContext, useState } from 'react'
+import { useContext} from 'react'
 import { LoginContext, adminContext, userIDContext } from '../global/Context'
 
 const PastAppCard = ({patient, doctor, type, doctorNotes, patientNotes, appTime, cost, paid, medicationDelivery, key}) => {
 
-  const {pastAppDetails, setPastAppDetails} = useState('')
   const {userID, setUserID} =  useContext(userIDContext)
 
     return (
@@ -14,7 +13,7 @@ const PastAppCard = ({patient, doctor, type, doctorNotes, patientNotes, appTime,
               <div className="flex justify-between p-6">
               <span className="font-MT font-semibold text-xs leading-loose mr-10">
                 <p>Patient: {patient} </p>
-                <p>Appointment Info: {appTime}</p>
+                <p>Appointment Info: 12.12.21 at 1200H</p>
                 <p>Doctor: {doctor}</p>
                 <p>Type: {type}</p>
                 <p>Doctor Notes: {doctorNotes}</p>
