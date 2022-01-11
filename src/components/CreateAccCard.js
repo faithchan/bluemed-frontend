@@ -338,8 +338,7 @@ const CreateAccCard = () => {
             <p>{`${errorSource} already in use`}</p>
           </div>
         </div>:
-        <div className="mt-28">
-            </div>}
+        ""}
             
         </div>
     )
