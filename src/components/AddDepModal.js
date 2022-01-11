@@ -72,12 +72,12 @@ setPatientDetails(addDep)
          <span className="flex  mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Name</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" required/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" required/>
         </span>
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">Date of birth</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="date" id="DOB" 
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="date" id="DOB" 
          required />
         </span>
         </span>
@@ -85,12 +85,12 @@ setPatientDetails(addDep)
         <span className="flex  mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Address</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="address" required/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="address" required/>
         </span>
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">NRIC</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="NRIC" 
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="NRIC" 
         min="09:00" max="18:00" required />
         </span>
         </span>
@@ -98,12 +98,12 @@ setPatientDetails(addDep)
         <span className="flex  mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Relation</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="relation"  required/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="relation"  required/>
         </span>
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">Insurance ID</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID"
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID"
         required />
         </span>
         </span>
@@ -111,13 +111,13 @@ setPatientDetails(addDep)
         <span className="flex mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Drug allergies</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" required/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" required/>
         </span>
 
         <span>
-                    <label className="block font-MT text-sm text-gray-700">Gender</label>
+                    <label className="block font-MT text-sm text-gray-700 px-3">Gender</label>
 
-                    <span className="flex mt-3">   
+                    <span className="flex  mt-3">   
                     <label className="flex radio p-2 cursor-pointer">
                         <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" />
                             <div className="title px-2">M</div>
