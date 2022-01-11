@@ -38,11 +38,13 @@ const[depData, setDepData]=useState({
     function handleChange(e){
     const newData={...depData}
     newData[e.target.id]= e.target.value
-    console.log(newData)
     setDepData(newData)
+    console.log(newData)
+   
     const selectedDep =  dependents.findIndex((dep)=>dep.NRIC === depData.NRIC)
         console.log(selectedDep)
-        dependents[selectedDep] = depData
+        dependents[selectedDep] = newData
+        console.log(dependents)
 
     }
     
