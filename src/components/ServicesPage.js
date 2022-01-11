@@ -34,10 +34,11 @@ const ServicesPage = () => {
     const filterGPDoctor = data.filter((GP)=> GP.profession === "General Practitioner")
     const filterPaeDoctor = data.filter((Pae)=> Pae.profession === "Paediatrics")
     const filterPsyDoctor = data.filter((Psy)=> Psy.profession === "Psychologist")
-
+    console.log(filterGPDoctor)
     useEffect(()=>{
  
         getAllDoctors();
+        
     
     }, [])
 
@@ -54,6 +55,7 @@ const ServicesPage = () => {
             wellbeingServices={wellbeingServices} setWellbeingServices={setWellbeingServices} 
             paediatricsServices={paediatricsServices} setPaediatricsServices={setPaediatricsServices}
             />
+            {data.length === 0?<img className="h-32 w-32 mx-auto " src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import BookingModal from './BookingModal'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
 
-const DoctorCard = ({ doctorID, img, name, languages,bio, gender,pricing, profession}) => {
+const DoctorCard = ({ img, name, languages,bio, gender,pricing, profession, key, doctorID}) => {
     const [showBookingModal, setBookingModal] =useState(false)
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
@@ -12,7 +12,7 @@ const DoctorCard = ({ doctorID, img, name, languages,bio, gender,pricing, profes
 
     return (
         <div>
-            {showBookingModal? <BookingModal doctorID={doctorID} pricing={pricing} name={name} profession={profession} setBookingModal={setBookingModal}/>:""}
+            {showBookingModal? <BookingModal key={key} doctorID={doctorID} pricing={pricing} name={name} profession={profession} setBookingModal={setBookingModal}/>:""}
         <div className="px-8 mb-8">
             <div className=" rounded-md container w-full  bg-white  shadow-lg">
                 <div className=" h-32 overflow-hidden rounded-md" >

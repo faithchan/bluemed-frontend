@@ -71,12 +71,14 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
             "patient": userID,
             "doctor": doctorID,
             "type": profession,
+            "attendee": patientDetails.name,
             "patientNotes": entry.patientNotes,
             "zoomLink": "www.zoom.com",
             "appTime": new Date(`${entry.appDateOnly} ${entry.appTimeOnly}`)
     }
         if (entry.nameIndex !== "0") {
             payload.dependentNRIC = options[entry.nameIndex].NRIC
+            payload.attendee = options[entry.nameIndex].Patientname
         }
         console.log(payload)
         setBookingModal(false)
@@ -137,6 +139,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
 
     useEffect(()=> {
         console.log("use effect")
+        console.log(doctorID, name)
         getData()
     },[])
 
