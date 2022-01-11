@@ -167,7 +167,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
 
                     <span className="">
                         <span className="mr-4">
-                        <label className="block font-MT text-sm text-gray-700">Patient's Name</label>
+                        <label className="block font-MT text-sm text-gray-700 mb-2">Patient's Name</label>
                         <select name="patient" id="patient" onChange={handleNameIndex} className="w-full p-2 rounded-lg" required>
                         {/* <option value="name">Sarah Coleman</option>
                         <option value="name1">Dany Bailey</option> */}
@@ -184,19 +184,19 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
                     <span className="flex  mt-4 justify-between">   
                         <span className="">
                         <label className="block font-MT text-sm text-gray-700" htmlFor="birthdate">Appointment Date</label>
-                        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={handleAppDateOnly} type="date" id="appdate" name="appdate" required/>
+                        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={handleAppDateOnly} type="date" id="appdate" name="appdate" required/>
                         </span>
 
-                        <span className="ml-8">
+                        <span className="">
                         <label className="block font-MT text-sm text-gray-700" htmlFor="appt">Appointment Time</label>
-                        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={handleAppTimeOnly} type="time" id="apptime" name="apptime"
+                        <input className="mt-2 py-2 px-14 rounded-lg text-gray-700 text-sm" onChange={handleAppTimeOnly} type="time" id="apptime" name="apptime"
                         min="09:00" max="18:00" required />
                         </span>
                     </span>
 
                     <span className="mr-4">
                         <label className="mt-4 block font-MT text-sm text-gray-700">Notes to Doctor</label>
-                        <input type="text" name="" id="" placeholder="optional" onChange={handlePatientNotes} className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete />
+                        <input type="text" name="" id="" placeholder="optional" onChange={handlePatientNotes} className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete />
                     </span>
 
 
