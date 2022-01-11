@@ -1,7 +1,7 @@
 import React from 'react'
 import bluelogo from "../bluelogo.svg"
 
-const doctorNotesModal = () => {
+const DoctorNotesModal = () => {
     return (
         <div className="">
             	<div className="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -50,4 +50,4 @@ const doctorNotesModal = () => {
     )
 }
 
-export default doctorNotesModal
+export default DoctorNotesModal
