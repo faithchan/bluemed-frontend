@@ -58,24 +58,24 @@ setPatientDetails(userData)
          <span className="flex  mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700">Name</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" value={userData.name} />
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="name" value={userData.name} />
         </span>
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" >DOB</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="date" id="DOB" value={userData.DOB} />
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="date" id="DOB" value={userData.DOB} />
         </span>
         </span>
 
         <span className="flex  mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" >Address</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="address" value={userData.address}/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="address" value={userData.address}/>
         </span>
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700">Insurance ID</label>
-        <input className="mt-2 py-2 px-10 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" value={userData.insuranceID}
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" value={userData.insuranceID}
         />
         </span>
         </span>
@@ -83,7 +83,7 @@ setPatientDetails(userData)
         <span className="flex mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" >Drug allergies</label>
-        <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" value={userData.allergies}/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" value={userData.allergies}/>
         </span>
         </span>
 
