@@ -5,10 +5,13 @@ import EditDepModal from './EditDepModal'
 import deleteButton from '../deleteButton.svg'
 import {userIDContext } from '../global/Context'
 
-const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails, setPatientDetails}) => {
+const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,depRelation, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails, setPatientDetails, setEditDepData, editDepData}) => {
     const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
     const {userID, setUserID} =  useContext(userIDContext)
-    const [depDetails, setDepDetails] =useState({})
+
+   
+
+   
     const[userData, setUserData] = useState({name:name,
         DOB:DOB,
         address:address,
@@ -40,10 +43,9 @@ const deleteDepHandler = (e)=>{
 
 }
 
-
-
     return (
         <div>
+    
             <div className="mx-28 mb-8 ">
            <div className="bg-white rounded-lg p-6 drop-shadow-lg">
                <div className="flex justify-end " >
@@ -66,7 +68,17 @@ const deleteDepHandler = (e)=>{
                <li className="text-xs"> Drug Allergies: {depAllergies}</li>
            </ul>
        <div className="flex justify-center mt-6">
-       <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " onClick={()=>setEditDependency(true)} >Edit Details</button>
+       <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " onClick={()=>{setEditDependency(true)
+    setEditDepData({
+        name:depName,
+        NRIC:depNRIC,
+        DOB:depDOB,
+        gender:depGender,
+        relation:depRelation,
+        address:depAddress,
+        insuranceID:depInsuranceID,
+        allergies:depAllergies
+    })}} >Edit Details</button>
 
        </div>
            
