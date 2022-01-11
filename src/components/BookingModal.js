@@ -45,7 +45,7 @@ const BookingModal = ({setBookingModal, name, profession, pricing}) => {
 
                 <span className="flex  mt-4 justify-between">   
                     <span className="">
-                    <label className="block font-MT text-sm text-gray-700" for="birthdate">Appointment Date</label>
+                    <label className="block font-MT text-sm  text-gray-700" for="birthdate">Appointment Date</label>
                     <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" id="appdate" name="appdate" required/>
                     </span>
 
