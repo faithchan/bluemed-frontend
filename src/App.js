@@ -55,7 +55,7 @@ function App() {
     }
   }, [userID]);
 
-  console.log(admin, loggedIn, userID)
+  // console.log(admin, loggedIn, userID)
 
   return (
     <LoginContext.Provider value={{ loggedIn, setLoggedIn }}>

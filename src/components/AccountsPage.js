@@ -37,7 +37,7 @@ const AccountsPage = () => {
             getPatientDetails()
         }
     }
-    , [userID])
+    , [userID, patientDetails])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
    const[editDepData, setEditDepData]=useState({})
@@ -63,7 +63,7 @@ const AccountsPage = () => {
            </div>
          
             
-           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setPatientDetails={setPatientDetails} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
       
            
            
