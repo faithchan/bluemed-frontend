@@ -21,6 +21,7 @@ const MyAppPage = () => {
             const response = await fetch (schedAppURL);
             const data = await response.json();
             setSchedApp(data);
+            console.log(schedApp)
         }
         catch(error){
             console.log("error>>>",error)
@@ -33,6 +34,7 @@ const MyAppPage = () => {
             const response = await fetch (pastAppURL);
             const data = await response.json();
             setPastApp(data);
+            
         }
         catch(error){
             console.log("error>>>",error)
@@ -54,7 +56,7 @@ const MyAppPage = () => {
             <AppList pastButton={pastButton} setPastButton={setPastButton} setSchedButton={setSchedButton} schedButton={schedButton} />
 
             {schedButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            {schedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes}/>)}
+            {schedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp}/>)}
             </div>:""}
 
             {pastButton?
