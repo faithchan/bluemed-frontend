@@ -4,7 +4,7 @@ import DocNotesModal from './DocNotesModal'
 import { adminContext } from '../global/Context'
 
 
-const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp}) => {
+const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp, getAllPastApp}) => {
   const {admin, setAdmin} =  useContext(adminContext)
   const[schedAppStatus, setSchedAppStatus]= useState(false)
   
@@ -22,7 +22,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
 
     return (
         <div>
-          {schedAppStatus?<DocNotesModal setSchedAppStatus={setSchedAppStatus}/>:""}
+          {schedAppStatus?<DocNotesModal setSchedAppStatus={setSchedAppStatus} getAllSchedApp={getAllSchedApp} getAllPastApp={getAllPastApp} id={id}/>:""}
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
