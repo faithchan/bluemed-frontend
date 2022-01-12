@@ -6,6 +6,7 @@ const PastAppCard = ({patient, doctor, type, doctorNotes, attendee, patientNotes
 
   const {userID, setUserID} =  useContext(userIDContext)
 
+  const ch
 
     return (
         <div>

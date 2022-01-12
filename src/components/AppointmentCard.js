@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AppointmentCard = ({patient, doctor, type, patientNotes, zoomLink, key, appTime, schID, attendee}) => {
 
-
   let navigate = useNavigate();
-  //arr contains a set of appointements
 
   const schAppURL = `https://bluemed-backend.herokuapp.com/schApp/${schID}`
 
@@ -23,7 +21,6 @@ const AppointmentCard = ({patient, doctor, type, patientNotes, zoomLink, key, ap
         }
       })
   }
-
     return (
         <div>
             <div className=" rounded-lg bg-white drop-shadow-lg ">
