@@ -13,6 +13,7 @@ const MyAppPage = () => {
     const[pastButton, setPastButton] =useState(false)
     const[pastApp, setPastApp]=useState([])
     const[schedApp, setSchedApp]=useState([])
+    const[allSchedApp, setAllSchedApp]=useState([])
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
     const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`
@@ -42,11 +43,24 @@ const MyAppPage = () => {
     }  
 
 
+    const allSchedAppURL = 'https://bluemed-backend.herokuapp.com/schApp/all'
+    const getAllSchedApp = async()=>{
+        try{
+            const response = await fetch (allSchedAppURL);
+            const data = await response.json();
 
-    useEffect(()=>{getSchedApp();getPastApp();},[])
+            setAllSchedApp(data);   
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }  
+
+    useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();},[])
 
   console.log(pastApp)
   console.log(schedApp)
+  console.log(allSchedApp)
 
 
     return (
@@ -57,6 +71,10 @@ const MyAppPage = () => {
 
             {schedButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
             {schedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp}/>)}
+            </div>:""}
+
+            {schedButton && admin?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
+            {allSchedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp}/>)}
             </div>:""}
 
             {pastButton?
