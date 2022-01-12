@@ -152,9 +152,10 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
     useEffect(()=> {
         console.log("use effect", options)
         console.log(doctorID, name)
+        console.log(patientDetails)
         getData()
         //console.log(`${new Date().getUTCFullYear() + 1}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`)
-    },[])
+    },[patientDetails])
 
     return (
         <div className="">

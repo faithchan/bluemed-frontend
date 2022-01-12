@@ -3,7 +3,7 @@ import UserImage from "../userimage.svg"
 import UserDetails from './UserDetails'
 import DependencyDetails from './DependencyDetails'
 import addButton from '../addButton.svg'
-import { LoginContext, adminContext, userIDContext} from '../global/Context';
+import { LoginContext, adminContext, userIDContext, patientData} from '../global/Context';
 import EditDepModal from './EditDepModal'
 import EditUserModal from './EditUserModal'
 import AddDepModal from './AddDepModal'
@@ -15,7 +15,7 @@ const AccountsPage = () => {
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
-    const [patientDetails, setPatientDetails] = useState('')
+    const {patientDetails, setPatientDetails} = useContext(patientData)
     
 
     const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
