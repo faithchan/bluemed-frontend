@@ -37,7 +37,6 @@ useEffect(() => {
 }
 , [userID])
 
-console.log(patientDetails)
 
   return (
     <LoginContext.Provider value={{loggedIn, setLoggedIn}}>

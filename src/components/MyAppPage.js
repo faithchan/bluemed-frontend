@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import AppointmentCard from './AppointmentCard'
 import AppList from './AppList'
 import PastAppCard from './PastAppCard'
@@ -11,10 +11,40 @@ const MyAppPage = () => {
     
     const[schedButton, setSchedButton] =useState(true)
     const[pastButton, setPastButton] =useState(false)
-    const[pastApp, setPastApp]=useState('')
-    const[schedApp, setSchedApp]=useState('')
-//useEffect fetch api from sched and past app then pass data down to the individual appointment cards
+    const[pastApp, setPastApp]=useState({})
+    const[schedApp, setSchedApp]=useState({})
+    //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
+    const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`
+    const getSchedApp = async()=>{
+        try{
+            const response = await fetch (schedAppURL);
+            const data = await response.json();
+            setSchedApp(data);
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }  
+    
+    const pastAppURL = `https://bluemed-backend.herokuapp.com/pastApp/patients/${userID}`
+    const getPastApp = async()=>{
+        try{
+            const response = await fetch (pastAppURL);
+            const data = await response.json();
+            setPastApp(data);
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }  
+
+
+
+    useEffect(()=>{getSchedApp();getPastApp();},[])
+
+  console.log(pastApp)
+  console.log(schedApp)
 
 
     return (
