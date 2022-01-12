@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState,useContext} from 'react'
 import ReceiptModal from './ReceiptModal'
+import { adminContext } from '../global/Context'
 
 const PastAppCard = ({name, appInfo, doctor, type, notes, status}) => {
+  const {admin, setAdmin} =  useContext(adminContext)
 const[showReceipt, setShowReceipt]=useState(false)
+
 
 const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
     const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
@@ -28,6 +31,10 @@ const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
                 <li><button className="bg-green rounded-full w-4 h-4 mr-2 " /></li>
                 <p className="text-left">{status}</p>
                 </ul>
+                {admin?<ul className="text-xs flex mt-2">
+                <li><button className="bg-yellow rounded-full w-4 h-4 mr-2 " /></li>
+                <p className="text-left cursor-pointer hover:underline">Change Status</p>
+                </ul>:""}
               </span>
               </div>
  
