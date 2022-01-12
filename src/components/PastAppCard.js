@@ -2,17 +2,21 @@ import React, {useState,useContext} from 'react'
 import ReceiptModal from './ReceiptModal'
 import { adminContext } from '../global/Context'
 
-const PastAppCard = ({name, appInfo, doctor, type, notes, status}) => {
+const PastAppCard = ({name, appInfo, doctor, type, notes, status, price, appEnd, doctorNotes}) => {
   const {admin, setAdmin} =  useContext(adminContext)
 const[showReceipt, setShowReceipt]=useState(false)
 
 
-const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
-    const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
+const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-SG")
+const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
  
     return (
         <div>
-          {showReceipt?<ReceiptModal setShowReceipt={setShowReceipt} showReceipt={showReceipt}/>:""}
+          {showReceipt?<ReceiptModal setShowReceipt={setShowReceipt} 
+          showReceipt={showReceipt} doctor={doctor}
+          issueDate={new Date(Date.parse(appEnd)).toLocaleDateString("en-SG") + " at "+ new Date(Date.parse(appEnd)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})} 
+          attendee={name} price={price}  doctorNotes={doctorNotes}
+          date={date + " at " + time}/>:""}
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">

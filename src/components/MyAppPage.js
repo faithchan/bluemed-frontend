@@ -96,12 +96,12 @@ const MyAppPage = () => {
 
             {pastButton && !admin?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
+                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery} price={app.cost} appEnd={app.appTimeEnd} doctorNotes={app.doctorNotes}/>)}
             </div>:""}
 
             {pastButton && admin?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-                {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
+                {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery} price={app.cost}  appEnd={app.appTimeEnd} doctorNotes={app.doctorNotes}/>)}
             </div>:""}
 
         </div>

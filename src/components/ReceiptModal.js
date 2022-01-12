@@ -1,7 +1,7 @@
 import React from 'react'
 import bluelogo from "../bluelogo.svg"
 
-const ReceiptModal = ({showReceipt, setShowReceipt}) => {
+const ReceiptModal = ({showReceipt, setShowReceipt, attendee, issueDate, date, price, doctorNotes, doctor}) => {
     return (
         <div className="">
         <div className="w-full h-full fixed block top-0 left-0 bg-black opacity-75 z-10"></div>
@@ -20,7 +20,7 @@ const ReceiptModal = ({showReceipt, setShowReceipt}) => {
                         <div>
                             <img className="w-44 mt-4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU4AAAAeAQMAAAB5ZGVpAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI3tyrEJACAMBEDh24eskgECri44QFYJfGuhc0jKgxsiZFRNr0wgyIrjtZWPHmetBM2gGF27du36Z72G5FJDYMX7jwAAAABJRU5ErkJggg==" alt="barcode"/>
                             <br/>
-                            Issued on Date 2022
+                            Issued on {issueDate}
                         </div> 
                     </div>
                 </div>
@@ -38,9 +38,10 @@ const ReceiptModal = ({showReceipt, setShowReceipt}) => {
                     
                     <span className="">
                         <strong className="font-semibold font-MT text-blue-400 text-lg ">BlueMed SG Pte Ltd</strong>
-                        <p className="mt-2">Name:</p>
-                        <p>Date of Appointment:</p>
-                        <p>Doctor Prescription:</p>
+                        <p className="mt-2">Patient Name: {attendee}</p>
+                        <p>Date of Appointment: {date}</p>
+                        <p>Attending Doctor: {doctor}</p>
+                        <p>Remarks: {doctorNotes}</p>
                         
                     </span>
                 </div>
@@ -53,7 +54,7 @@ const ReceiptModal = ({showReceipt, setShowReceipt}) => {
             <div class="flex justify-between mt-8">
                 
                     
-                    <p>Total Amount:</p>
+                    <p>Total Cost: ${price.toFixed(2)}</p>
                     <button className="w-40 block  bg-white hover:bg-gray-200 focus:bg-gray-300 text-gray-400 font-semibold rounded-full font-MT
             px-4 py-3 mt-6" onClick={()=>setShowReceipt(false)}>Close</button>
                    
