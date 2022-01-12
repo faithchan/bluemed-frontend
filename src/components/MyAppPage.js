@@ -44,7 +44,7 @@ const MyAppPage = () => {
     }  
 
 
-    const allSchedAppURL = 'https://bluemed-backend.herokuapp.com/schApp/all'
+    const allSchedAppURL = 'https://bluemed-backend.herokuapp.com/schApp/populated/all'
     const getAllSchedApp = async()=>{
         try{
             const response = await fetch (allSchedAppURL);
@@ -58,7 +58,7 @@ const MyAppPage = () => {
     }  
 
 
-    const allPastAppURL = 'https://bluemed-backend.herokuapp.com/pastApp/all'
+    const allPastAppURL = 'https://bluemed-backend.herokuapp.com/pastApp/populated/all'
     const getAllPastApp = async()=>{
         try{
             const response = await fetch (allPastAppURL);
@@ -95,12 +95,12 @@ const MyAppPage = () => {
 
             {pastButton && !admin?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
+                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery} price={app.cost} appEnd={app.appTimeEnd} doctorNotes={app.doctorNotes}/>)}
             </div>:""}
 
             {pastButton && admin?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-                {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
+                {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery} price={app.cost}  appEnd={app.appTimeEnd} doctorNotes={app.doctorNotes}/>)}
             </div>:""}
 
         </div>
