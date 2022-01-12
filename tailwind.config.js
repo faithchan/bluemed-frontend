@@ -12,7 +12,8 @@ module.exports = {
           500:"#061449"},
         red: "#DC0613",
         grey:"#808080",
-        green:"#008F40"
+        green:"#008F40",
+        yellow:"#F2AB33"
       }
     },
   },
