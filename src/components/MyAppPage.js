@@ -14,6 +14,7 @@ const MyAppPage = () => {
     const[pastApp, setPastApp]=useState([])
     const[schedApp, setSchedApp]=useState([])
     const[allSchedApp, setAllSchedApp]=useState([])
+    const[allPastApp, setAllPastApp]=useState([])
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
     const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`
@@ -56,11 +57,26 @@ const MyAppPage = () => {
         }
     }  
 
-    useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();},[])
 
-  console.log(pastApp)
-  console.log(schedApp)
-  console.log(allSchedApp)
+    const allPastAppURL = 'https://bluemed-backend.herokuapp.com/pastApp/all'
+    const getAllPastApp = async()=>{
+        try{
+            const response = await fetch (allPastAppURL);
+            const data = await response.json();
+
+            setAllPastApp(data);   
+        }
+        catch(error){
+            console.log("error>>>",error)
+        }
+    }  
+
+    useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();getAllPastApp();},[])
+
+//   console.log(pastApp)
+//   console.log(schedApp)
+//   console.log(allSchedApp)
+  console.log(allPastApp)
 
 
     return (
@@ -69,7 +85,7 @@ const MyAppPage = () => {
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">My Appointments</p>
             <AppList pastButton={pastButton} setPastButton={setPastButton} setSchedButton={setSchedButton} schedButton={schedButton} />
 
-            {schedButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
+            {schedButton && !admin?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
             {schedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp}/>)}
             </div>:""}
 
@@ -77,9 +93,14 @@ const MyAppPage = () => {
             {allSchedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp}/>)}
             </div>:""}
 
-            {pastButton?
+            {pastButton && !admin?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
                 {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
+            </div>:""}
+
+            {pastButton && admin?
+            <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
+                {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
             </div>:""}
 
         </div>
