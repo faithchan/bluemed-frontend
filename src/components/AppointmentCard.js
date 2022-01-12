@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp, schedApp, setSchedApp}) => {
+const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp}) => {
   const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
   const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
   const deleteAppURL = `https://bluemed-backend.herokuapp.com/schApp/${id}`
@@ -11,6 +11,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp, sc
     await axios.delete(deleteAppURL).then((res)=>console.log(res))
       .catch((err)=>console.log(err));
       getSchedApp();
+      getAllSchedApp();
 }
 
     return (
