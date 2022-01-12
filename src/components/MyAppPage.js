@@ -15,6 +15,7 @@ const MyAppPage = () => {
     const[schedApp, setSchedApp]=useState([])
     const[allSchedApp, setAllSchedApp]=useState([])
     const[allPastApp, setAllPastApp]=useState([])
+    
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
     const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`

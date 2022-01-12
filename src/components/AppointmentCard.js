@@ -1,10 +1,11 @@
-import React, {useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
-
+import DoctorNotesModal from './DoctorNotesModal'
 import { adminContext } from '../global/Context'
 
 const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp}) => {
   const {admin, setAdmin} =  useContext(adminContext)
+  const[schedAppStatus, setSchedAppStatus]= useState(false)
   
   const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
   const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
@@ -20,6 +21,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
 
     return (
         <div>
+          {schedAppStatus?<DoctorNotesModal setSchedAppStatus={setSchedAppStatus}/>:""}
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
@@ -40,7 +42,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
                 </ul>
                 {admin?<ul className="text-xs flex mt-2">
                 <li><button className="bg-yellow rounded-full w-4 h-4 mr-2 " /></li>
-                <p className="text-left cursor-pointer hover:underline">Change Status</p>
+                <p className="text-left cursor-pointer hover:underline" onClick={()=>setSchedAppStatus(true)}>Change Status</p>
                 </ul>:""}
               </span>
               </div>
