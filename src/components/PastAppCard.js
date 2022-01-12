@@ -6,7 +6,7 @@ const[showReceipt, setShowReceipt]=useState(false)
 
 const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
     const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
-  console.log(date, time)
+ 
     return (
         <div>
           {showReceipt?<ReceiptModal setShowReceipt={setShowReceipt} showReceipt={showReceipt}/>:""}
