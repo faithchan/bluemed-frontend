@@ -24,6 +24,7 @@ const Navbar = () => {
             setLoggedIn(false);
             setAdmin(false);
             setUserID(false);
+            localStorage.removeItem("userID")
             console.log(logoutDetails)
         }
         catch(error){
