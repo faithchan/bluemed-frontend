@@ -31,10 +31,7 @@ const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
                 <li><button className="bg-green rounded-full w-4 h-4 mr-2 " /></li>
                 <p className="text-left">{status}</p>
                 </ul>
-                {admin?<ul className="text-xs flex mt-2">
-                <li><button className="bg-yellow rounded-full w-4 h-4 mr-2 " /></li>
-                <p className="text-left cursor-pointer hover:underline">Change Status</p>
-                </ul>:""}
+                
               </span>
               </div>
  
