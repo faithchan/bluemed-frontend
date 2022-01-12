@@ -13,6 +13,7 @@ const MyAppPage = () => {
     const[pastButton, setPastButton] =useState(false)
     const[pastApp, setPastApp]=useState([])
     const[schedApp, setSchedApp]=useState([])
+    const[showReceipt, setShowReceipt]= useState(false)
 
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
@@ -81,7 +82,7 @@ const MyAppPage = () => {
             arr = {schedApp}
             />
             )}
-            <AppointmentCard />
+         
             </div>:""}
 
             {pastButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
@@ -97,9 +98,11 @@ const MyAppPage = () => {
                 appTime = {details.appTime} 
                 cost = {details.cost} 
                 paid = {details.paid} 
-                medicationDelivery = {details.medicationDelivery} />
+                medicationDelivery = {details.medicationDelivery}
+                showReceipt={showReceipt}
+                setShowReceipt={setShowReceipt} />
                 )}
-            <PastAppCard />
+          
             </div>:""}
 
         </div>
