@@ -88,7 +88,7 @@ const CreateAccCard = () => {
         email: "",
         password: "",
         password2: "",
-        DOB: "",
+        DOB: "2000-01-01",
         gender: "",
         address: "",
         contactNumber: "",
@@ -100,8 +100,20 @@ const CreateAccCard = () => {
         console.log("no focus NRIC")
     }
 
+    const focusOutEmail = (event) => {
+        console.log("no focus Email")
+    }
+
     const focusOutPassword2 = (event) => {
         console.log("no focus password 2")
+        if (entry.password !== entry.password2) {
+            console.log("error password no match")
+            setErrorSource("retyped password does not match")
+            dispatchItem({ type: "PASSWORD2", value: ""})
+        }
+        else {
+            setErrorSource(false)
+        }
     }
 
     const handleNameFull = (event) => {
@@ -192,13 +204,13 @@ const CreateAccCard = () => {
                 );
                 if (responseEmail.ok && responseNRIC.ok) {
                     console.log("email and NRIC is already in use")
-                    setErrorSource("NRIC and email")
+                    setErrorSource("NRIC and email already in use")
                 }else if (responseEmail.ok) {
                     console.log("email is already in use")
-                    setErrorSource("Email")
+                    setErrorSource("Email already in use")
                 }else if (responseNRIC.ok) {
                     console.log("nric is already in use")
-                    setErrorSource("NRIC")
+                    setErrorSource("NRIC already in use")
                 }
 
                 if (!responseEmail.ok && !responseNRIC.ok) {
@@ -234,7 +246,9 @@ const CreateAccCard = () => {
 
     return (
         <div>
-            <form className="mt-2 font-MT" onFocus={()=> {setErrorSource(false)}} onSubmit={(e)=> { e.preventDefault()
+            <form className="mt-2 font-MT" 
+            //</div>onFocus={()=> {setErrorSource(false)}} 
+            onSubmit={(e)=> { e.preventDefault()
             
             }}>
 
@@ -254,7 +268,7 @@ const CreateAccCard = () => {
                 <span className="flex justify-between mt-2">
                 <span className="mr-4">
                 <label className="block mt-2 font-MT text-sm text-gray-700">Email</label>
-                    <input type="email" onChange={handleEmail} value={entry.email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                    <input type="email" onChange={handleEmail} value={entry.email} onBlur={focusOutEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                 </span>
                 <span>
                 <label className="block mt-2 font-MT text-sm text-gray-700">Contact Number</label>
@@ -277,7 +291,9 @@ const CreateAccCard = () => {
                 
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" htmlFor="birthdate">Date of birth</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} id="birthday" name="birthday" required/>
+                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} value={entry.DOB} id="birthday" name="birthday" 
+                    max= {`${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`}
+                    required/>
                     </span>
 
 
@@ -335,7 +351,7 @@ const CreateAccCard = () => {
             Error
           </div>
           <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0">
-            <p>{`${errorSource} already in use`}</p>
+            <p>{`${errorSource}`}</p>
           </div>
         </div>:
         ""}

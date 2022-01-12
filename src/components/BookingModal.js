@@ -1,9 +1,10 @@
 import React, {useContext, useReducer, useEffect, useState} from 'react'
-
+import { useNavigate } from 'react-router-dom';
 import bluelogo from "../bluelogo.svg"
 import { LoginContext, adminContext, userIDContext, patientData } from '../global/Context';
 
 const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) => {
+    const navigate = useNavigate();
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
@@ -43,8 +44,8 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
     const [entry, dispatchItem] = useReducer(itemReducer, {
         nameIndex: "0",
         patientNotes: "",
-        appDateOnly: "",
-        appTimeOnly: "",
+        appDateOnly: `${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`,
+        appTimeOnly: `${new Date().getHours()}:${new Date().getMinutes()}`,
     })
 
     const handleNameIndex = (event) => {
@@ -57,11 +58,13 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
     }
     const handleAppDateOnly = (event) => {
         
-        dispatchItem({ type: "DATE", value: event.target.value}) 
+        dispatchItem({ type: "DATE", value: event.target.value})
+        console.log(event.target.value) 
     }
     const handleAppTimeOnly = (event) => {
         
         dispatchItem({ type: "TIME", value: event.target.value}) 
+        console.log(event.target.value)
     }
 
     const handleSubmit = async(event) => {
@@ -76,6 +79,10 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
             "zoomLink": "www.zoom.com",
             "appTime": new Date(`${entry.appDateOnly} ${entry.appTimeOnly}`)
     }
+        if (profession === "Paediatrics") {
+            payload.dependentNRIC = options[entry.nameIndex].NRIC
+            payload.attendee = options[entry.nameIndex].Patientname
+        }
         if (entry.nameIndex !== "0") {
             payload.dependentNRIC = options[entry.nameIndex].NRIC
             payload.attendee = options[entry.nameIndex].Patientname
@@ -94,6 +101,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
             }
             );
             const dataSchApp = await schAppResponse.json();
+            navigate("/myapp")
             console.log(dataSchApp)
         }
         catch(error){
@@ -113,12 +121,16 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
             // }
             // );
             // const dataUser = await responseUser.json();
-            const arrayPatientOrDependents = [
-                {
-                    NRIC: patientDetails.NRIC,
-                    Patientname: patientDetails.name
-                }
-            ]
+            const arrayPatientOrDependents = []
+            if (profession !== "Paediatrics") {
+                console.log("not paediatrics")
+                arrayPatientOrDependents.push(
+                    {
+                        NRIC: patientDetails.NRIC,
+                        Patientname: patientDetails.name
+                    }
+                )
+            }
             console.log(patientDetails)
             patientDetails.dependents.map((element)=>{
                 console.log(element)
@@ -138,9 +150,10 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
     //console.log(patientDetails, userID)
 
     useEffect(()=> {
-        console.log("use effect")
+        console.log("use effect", options)
         console.log(doctorID, name)
         getData()
+        //console.log(`${new Date().getUTCFullYear() + 1}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`)
     },[])
 
     return (
@@ -171,11 +184,10 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
                         <select name="patient" id="patient" onChange={handleNameIndex} className="w-full px-3 py-2 rounded-lg" required>
                         {/* <option value="name">Sarah Coleman</option>
                         <option value="name1">Dany Bailey</option> */}
-                        {(options? options.map((element, index)=> {
+                        {(options  ? options.map((element, index)=> {
                             return <option value={index}>{element.Patientname}</option>
-                        }
-                            
-                        ): "")}
+                        }): "")}
+                        {(profession === "Paediatrics" && options.length=== 0? <option disabled={true} >No dependants found</option>: "")}
                         </select>
                         </span>
                     </span>
@@ -184,12 +196,14 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
                     <span className="flex  mt-4 justify-between">   
                         <span className="">
                         <label className="block font-MT text-sm text-gray-700" htmlFor="birthdate">Appointment Date</label>
-                        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={handleAppDateOnly} type="date" id="appdate" name="appdate" required/>
+                        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" value={entry.appDateOnly} onChange={handleAppDateOnly} type="date" id="appdate" name="appdate" 
+                        min={`${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`} 
+                        max={`${new Date().getUTCFullYear() + 1}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`} required/>
                         </span>
 
                         <span className="">
                         <label className="block font-MT text-sm text-gray-700" htmlFor="appt">Appointment Time</label>
-                        <input className="mt-2 py-2 px-14 rounded-lg text-gray-700 text-sm" onChange={handleAppTimeOnly} type="time" id="apptime" name="apptime"
+                        <input className="mt-2 py-2 px-14 rounded-lg text-gray-700 text-sm" value={entry.appTimeOnly} onChange={handleAppTimeOnly} type="time" id="apptime" name="apptime"
                         min="09:00" max="18:00" required />
                         </span>
                     </span>
