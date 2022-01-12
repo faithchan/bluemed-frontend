@@ -1,7 +1,8 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios'
-import DoctorNotesModal from './DoctorNotesModal'
+import DocNotesModal from './DocNotesModal'
 import { adminContext } from '../global/Context'
+
 
 const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp}) => {
   const {admin, setAdmin} =  useContext(adminContext)
@@ -21,7 +22,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
 
     return (
         <div>
-          {schedAppStatus?<DoctorNotesModal setSchedAppStatus={setSchedAppStatus}/>:""}
+          {schedAppStatus?<DocNotesModal setSchedAppStatus={setSchedAppStatus}/>:""}
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
