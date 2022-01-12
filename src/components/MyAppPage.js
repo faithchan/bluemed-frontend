@@ -11,8 +11,8 @@ const MyAppPage = () => {
     
     const[schedButton, setSchedButton] =useState(true)
     const[pastButton, setPastButton] =useState(false)
-    const[pastApp, setPastApp]=useState({})
-    const[schedApp, setSchedApp]=useState({})
+    const[pastApp, setPastApp]=useState([])
+    const[schedApp, setSchedApp]=useState([])
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
     const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`
@@ -58,9 +58,9 @@ const MyAppPage = () => {
             <AppointmentCard />
             </div>:""}
 
-            {pastButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            <PastAppCard />
-            <PastAppCard />
+            {pastButton?
+            <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
+                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} />)}
             </div>:""}
 
         </div>
