@@ -67,6 +67,7 @@ const LoginForm = () => {
         setUserID(loginDetails.patientID)
         setAdmin(false)
       }
+      localStorage.setItem('userID', loginDetails.patientID)
       navigate('/account')
   }
   catch(error){

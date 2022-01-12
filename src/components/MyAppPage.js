@@ -46,7 +46,7 @@ const MyAppPage = () => {
                 const response = await fetch(schAppURL); 
                 // console.log(response)
                 const data = await response.json(); 
-                // console.log(data);
+                 console.log(data);
                 setSchedApp(data);
             }
             catch(err) {
