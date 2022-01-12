@@ -34,10 +34,11 @@ const ServicesPage = () => {
     const filterGPDoctor = data.filter((GP)=> GP.profession === "General Practitioner")
     const filterPaeDoctor = data.filter((Pae)=> Pae.profession === "Paediatrics")
     const filterPsyDoctor = data.filter((Psy)=> Psy.profession === "Psychologist")
-
+    console.log(filterGPDoctor)
     useEffect(()=>{
  
         getAllDoctors();
+        
     
     }, [])
 
@@ -54,13 +55,14 @@ const ServicesPage = () => {
             wellbeingServices={wellbeingServices} setWellbeingServices={setWellbeingServices} 
             paediatricsServices={paediatricsServices} setPaediatricsServices={setPaediatricsServices}
             />
+            {data.length === 0?<img className="h-32 w-32 mx-auto " src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
-            {allServices ? data.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
-            {GPServices ? filterGPDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession}/>) : ""}
-            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
-            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard key={service.id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {allServices ? data.map((service)=><DoctorCard key={service._id} doctorID={service._id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {GPServices ? filterGPDoctor.map((service)=><DoctorCard key={service._id} doctorID={service._id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession}/>) : ""}
+            {wellbeingServices ? filterPsyDoctor.map((service)=><DoctorCard key={service._id} doctorID={service._id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
+            {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard key={service._id} doctorID={service._id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
 
             </div>
 
