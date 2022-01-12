@@ -25,7 +25,7 @@ const deleteDepHandler = async(e)=>{
     e.preventDefault();
     const selectedDep =  dependents.findIndex((dep)=>dep.NRIC === depNRIC)
   dependents.splice(selectedDep,1)
-   const newDep = dependents
+ 
    
  await axios.put(editPatientUrl, patientDetails).then((res)=>console.log(res))
 .catch((err)=>console.log(err))
