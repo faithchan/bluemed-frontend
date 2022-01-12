@@ -44,7 +44,7 @@ const MyAppPage = () => {
     }  
 
 
-    const allSchedAppURL = 'https://bluemed-backend.herokuapp.com/schApp/all'
+    const allSchedAppURL = 'https://bluemed-backend.herokuapp.com/schApp/populated/all'
     const getAllSchedApp = async()=>{
         try{
             const response = await fetch (allSchedAppURL);
@@ -58,7 +58,7 @@ const MyAppPage = () => {
     }  
 
 
-    const allPastAppURL = 'https://bluemed-backend.herokuapp.com/pastApp/all'
+    const allPastAppURL = 'https://bluemed-backend.herokuapp.com/pastApp/populated/all'
     const getAllPastApp = async()=>{
         try{
             const response = await fetch (allPastAppURL);
