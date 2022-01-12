@@ -1,17 +1,19 @@
 import React from 'react'
 
-const AppointmentCard = () => {
+const AppointmentCard = ({name, appInfo, doctor, type, notes}) => {
+  const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
+    const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
     return (
         <div>
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
               <span className="font-MT font-semibold text-xs leading-loose mr-10">
-                <p>Patient: Sarah Lee</p>
-                <p>Appointment Info: 31/12/2021 at 1200H</p>
-                <p>Doctor: Mohit Dhiman</p>
-                <p>Type: Psychotherapy</p>
-                <p>Notes: Weekly Catch Up 1H Session</p>
+                <p>Patient: {name}</p>
+                <p>Date: {date} at {time}</p>
+                <p>Doctor: {doctor}</p>
+                <p>Type: {type}</p>
+                <p>Notes: {notes}</p>
               </span>
 
               <span className="font-MT font-semibold text-right leading-loose">

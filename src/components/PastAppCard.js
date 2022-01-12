@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ReceiptModal from './ReceiptModal'
 
-const PastAppCard = ({name, appInfo, doctor, type, notes}) => {
+const PastAppCard = ({name, appInfo, doctor, type, notes, status}) => {
 const[showReceipt, setShowReceipt]=useState(false)
 
 const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
@@ -26,7 +26,7 @@ const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
               <button className="bg-blue-400 hover:bg-blue-450 text-white font-semibold tracking-widest font-MT py-2 px-4 rounded-full text-xs mx-auto " onClick={()=>setShowReceipt(true)} >View Receipt</button>
                 <ul className="text-xs flex mt-4">
                 <li><button className="bg-green rounded-full w-4 h-4 mr-2 " /></li>
-                <p className="text-left">Completed and delivered</p>
+                <p className="text-left">{status}</p>
                 </ul>
               </span>
               </div>

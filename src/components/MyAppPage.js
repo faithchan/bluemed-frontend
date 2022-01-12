@@ -51,16 +51,15 @@ const MyAppPage = () => {
         <div>
          <hr className="mx-28"/>
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">My Appointments</p>
-            <AppList pastButton={pastButton} setPastButton={setPastButton} setSchedButton={setSchedButton} schedButton={schedButton}/>
+            <AppList pastButton={pastButton} setPastButton={setPastButton} setSchedButton={setSchedButton} schedButton={schedButton} />
 
             {schedButton?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            <AppointmentCard />
-            <AppointmentCard />
+            {schedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes}/>)}
             </div>:""}
 
             {pastButton?
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} />)}
+                {pastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery}/>)}
             </div>:""}
 
         </div>
