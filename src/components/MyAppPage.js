@@ -24,7 +24,6 @@ const MyAppPage = () => {
             const response = await fetch (schedAppURL);
             const data = await response.json();
             setSchedApp(data);
-            console.log(schedApp)
         }
         catch(error){
             console.log("error>>>",error)
@@ -75,7 +74,7 @@ const MyAppPage = () => {
     useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();getAllPastApp();},[])
 
 //   console.log(pastApp)
-//   console.log(schedApp)
+  console.log(schedApp)
 //   console.log(allSchedApp)
   console.log(allPastApp)
 
@@ -91,7 +90,7 @@ const MyAppPage = () => {
             </div>:""}
 
             {schedButton && admin?<div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
-            {allSchedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp} getAllSchedApp={getAllSchedApp}/>)}
+            {allSchedApp.map((app)=><AppointmentCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} id={app._id} getSchedApp={getSchedApp} schedApp={schedApp} setSchedApp={setSchedApp} getAllSchedApp={getAllSchedApp} getAllPastApp={getPastApp}/>)}
             </div>:""}
 
             {pastButton && !admin?

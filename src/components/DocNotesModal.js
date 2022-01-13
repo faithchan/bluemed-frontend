@@ -1,10 +1,28 @@
-import React from 'react'
+import React,{useState} from 'react'
 import bluelogo from "../bluelogo.svg"
+import axios from 'axios'
+const DocNotesModal = ({setSchedAppStatus,id, getAllSchedApp,getAllPastApp}) => {
 
-const DocNotesModal = ({setSchedAppStatus}) => {
-    const submitHandler = (e)=>{
+const [body,setBody]=useState({
+    doctorNotes:""
+})
+
+    const changeStatusURL=`https://bluemed-backend.herokuapp.com/schapp/promote/${id}`
+
+    const handleChange=(e)=>{
+const notes = {...body}
+console.log(notes[e.target.id] = e.target.value)
+notes[e.target.id] = e.target.value
+setBody(notes)
+    }
+
+    const submitHandler = async(e)=>{
         e.preventDefault();
         setSchedAppStatus(false)
+        await axios.post(changeStatusURL,body).then((res)=>console.log(res))
+      .catch((err)=>console.log(err));
+      getAllPastApp();
+      getAllSchedApp();
     }
     
     
@@ -28,7 +46,7 @@ const DocNotesModal = ({setSchedAppStatus}) => {
                         <span className="">
                             <span className="mr-4">
                             
-                            <input id="patient"  className="w-full px-3 py-2 rounded-lg" >
+                            <input id="doctorNotes"  className="w-full px-3 py-2 rounded-lg" onChange={(e)=>handleChange(e)}>
                            
                             </input>
                             </span>
@@ -41,7 +59,7 @@ const DocNotesModal = ({setSchedAppStatus}) => {
                             <button type="submit" 
                 
                             className="w-full ml-4 block bg-blue-400 hover:bg-blue-450 focus:bg-blue-500 text-white font-semibold rounded-full font-MT
-                            px-4 py-3 mt-6">Confirm</button>
+                            px-4 py-3 mt-6">Completed</button>
                         </span>
                    
     
