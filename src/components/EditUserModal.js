@@ -21,6 +21,8 @@ const [userData, setUserData] = useState({
     dependents: dependents,
     contactNumber: contactNumber
 })
+//const {patientDetails, setPatientDetails} =  useContext(patientData)
+console.log(patientDetails)
 console.log(userData)
 
 
