@@ -268,7 +268,7 @@ const CreateAccCard = () => {
                 <span className="flex justify-between mt-2">
                 <span className="mr-4">
                 <label className="block mt-2 font-MT text-sm text-gray-700">Email</label>
-                    <input type="email" onChange={handleEmail} value={entry.email} onBlur={focusOutEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
+                    <input type="email" onChange={handleEmail} value={entry.email} onBlur={focusOutEmail} pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$" name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
                 </span>
                 <span>
                 <label className="block mt-2 font-MT text-sm text-gray-700">Contact Number</label>
