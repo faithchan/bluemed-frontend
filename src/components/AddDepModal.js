@@ -119,17 +119,17 @@ setPatientDetails(addDep)
 
                     <span className="flex  mt-3">   
                     <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" name="genderRad"/>
                             <div className="title px-2">M</div>
                         </label>
 
                         <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Female" id="gender"  />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Female" id="gender" name="genderRad"/>
                         <div className="title px-2">F</div>
                         </label>
 
                         <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Others" id="gender"  />
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Others" id="gender" name="genderRad"/>
                         <div className="title px-2">Others</div>
                         </label>
                         </span> 

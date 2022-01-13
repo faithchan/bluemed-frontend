@@ -45,7 +45,7 @@ const BookingModal = ({doctorID, setBookingModal, name, profession, pricing}) =>
         nameIndex: "0",
         patientNotes: "",
         appDateOnly: `${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`,
-        appTimeOnly: `${new Date().getHours()}:${new Date().getMinutes()}`,
+        appTimeOnly: `${(new Date().getHours() < 10? "0": "" )+ new Date().getHours()}:${(new Date().toLocaleTimeString('en-GB', {minute: '2-digit'}) < 10? "0": "") + (new Date().toLocaleTimeString('en-GB', {minute: '2-digit'}))}`,
     })
 
     const handleNameIndex = (event) => {

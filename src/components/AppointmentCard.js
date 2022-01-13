@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
+import DocNotesModal from './DocNotesModal'
+import { adminContext } from '../global/Context'
 
 
-const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp}) => {
+const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,getAllSchedApp, getAllPastApp}) => {
+  const {admin, setAdmin} =  useContext(adminContext)
+  const[schedAppStatus, setSchedAppStatus]= useState(false)
   
   const date = new Date(Date.parse(appInfo)).toLocaleDateString("en-GB")
   const time = new Date(Date.parse(appInfo)).toLocaleTimeString("en-SG", {hour12: false, hour: '2-digit', minute:'2-digit'})
@@ -18,6 +22,7 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
 
     return (
         <div>
+          {schedAppStatus?<DocNotesModal setSchedAppStatus={setSchedAppStatus} getAllSchedApp={getAllSchedApp} getAllPastApp={getAllPastApp} id={id}/>:""}
             <div className=" rounded-lg bg-white drop-shadow-lg ">
 
               <div className="flex justify-between p-6">
@@ -36,6 +41,10 @@ const AppointmentCard = ({name, appInfo, doctor, type, notes,id, getSchedApp,get
                 <li><button className="bg-red rounded-full w-4 h-4 mr-2 " /></li>
                 <p className="text-left cursor-pointer hover:underline">Cancel Appointment</p>
                 </ul>
+                {admin?<ul className="text-xs flex mt-2">
+                <li><button className="bg-yellow rounded-full w-4 h-4 mr-2 " /></li>
+                <p className="text-left cursor-pointer hover:underline" onClick={()=>setSchedAppStatus(true)}>Change Status</p>
+                </ul>:""}
               </span>
               </div>
  

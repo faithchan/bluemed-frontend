@@ -58,7 +58,7 @@ const AccountsPage = () => {
 
            <hr className="mx-28"/>
            <div className="flex cursor-pointer" onClick={()=>{setAddDepBtn(true)}} >
-           {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependency</p>:""}
+           {!admin?<p className="ml-28 my-4 font-MT text-grey tracking-wider">Add Dependant</p>:""}
            {!admin?<img src={addButton} alt="add dependency" className="w-5 ml-4" />:""}
            </div>
          
