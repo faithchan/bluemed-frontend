@@ -14,7 +14,7 @@ const ReceiptModal = ({showReceipt, setShowReceipt, attendee, issueDate, date, p
                 <div className="flex flex-col w-full mx-auto">
                     <div className="flex justify-between">
                         <img className="w-40 " src={bluelogo}/>
-                        <h1 className="text-s font-MT font-semibold mt-2">Receipt #0001</h1>
+                        
                     </div>
                     <div className="flex flex-row justify-between mt-4">
                         <div>
