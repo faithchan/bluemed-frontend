@@ -5,7 +5,7 @@ import EditDepModal from './EditDepModal'
 import deleteButton from '../deleteButton.svg'
 import {userIDContext } from '../global/Context'
 
-const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,depRelation, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails,  setEditDepData}) => {
+const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,depRelation, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails,  setEditDepData, refreshFlag, setRefreshFlag}) => {
     const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
     const {userID, setUserID} =  useContext(userIDContext)
 
@@ -23,6 +23,7 @@ const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,d
 
 const deleteDepHandler = async(e)=>{
     e.preventDefault();
+    setRefreshFlag(!refreshFlag)
     const selectedDep =  dependents.findIndex((dep)=>dep.NRIC === depNRIC)
   dependents.splice(selectedDep,1)
  

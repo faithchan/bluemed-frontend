@@ -110,15 +110,15 @@ const[depData, setDepData]=useState({
 
                     <span className="ml-8">
                     <label className="block font-MT text-sm text-gray-700" >Insurance ID</label>
-                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" value={depData.insuranceID}
-                    required />
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID" placeholder="Optional" value={depData.insuranceID}
+                     />
                     </span>
                     </span>
 
                     <span className="flex mt-4 justify-between">   
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700">Drug allergies</label>
-                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" value={depData.allergies} required/>
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" placeholder="Enter NA if none" value={depData.allergies} required/>
                     </span>
 
                     <span className="ml-8">

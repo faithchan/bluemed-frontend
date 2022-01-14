@@ -16,7 +16,7 @@ const AccountsPage = () => {
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
     const {patientDetails, setPatientDetails} = useContext(patientData)
-    
+    const [refreshFlag, setRefreshFlag] = useState(false)
 
     const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
   
@@ -32,12 +32,12 @@ const AccountsPage = () => {
         }
     }   
 
-    useEffect(() => {
-        if(userID) {
-            getPatientDetails()
-        }
-    }
-    , [userID, patientDetails])
+    // useEffect(() => {
+    //     if(userID) {
+    //         getPatientDetails()
+    //     }
+    // }
+    // , [userID])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
    const[editDepData, setEditDepData]=useState({})
@@ -63,7 +63,7 @@ const AccountsPage = () => {
            </div>
          
             
-           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setPatientDetails={setPatientDetails} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setPatientDetails={setPatientDetails} refreshFlag={refreshFlag} setRefreshFlag={setRefreshFlag} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
       
            
            
