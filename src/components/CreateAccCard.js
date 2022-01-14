@@ -256,7 +256,7 @@ const CreateAccCard = () => {
                 <span className="mr-4">
                 <label className="block font-MT text-sm text-gray-700">Full name as per NRIC</label>
                 <input type="text" onChange={handleNameFull} value={entry.name} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
-                </span>""
+                </span>
             
                 <span className="">
                 <label className="block font-MT text-sm text-gray-700">NRIC</label>
@@ -279,7 +279,7 @@ const CreateAccCard = () => {
                 <span className=''>
                 <label className="block text-sm text-gray-700 mt-4">Password:</label>
                 <span className="flex font-MT">
-                <input type="password" onChange={handlePassword} value={entry.password} name="" id="" placeholder="" minLength="6" className="mr-6 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                <input type="password" onChange={handlePassword} value={entry.password} name="" id="" placeholder="" minLength="6" className="mr-4 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
                         <input type="password" onChange={handlePassword2} onBlur={focusOutPassword2} value={entry.password2} name="" id="" placeholder="Retype password" minLength="6" className=" ml-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
