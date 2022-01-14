@@ -32,7 +32,7 @@ const AppList = ({setPastApp, setSchedApp, pastApp, schedApp, setSchedButton,sch
                 }}>Scheduled Appointments</button>}
 
             <span className="text-grey tracking-widest font-MT font-semibold text-xs">|</span>
-
+            
              {pastButton?<button className="ml-10 mb-3 tracking-widest font-MT font-semibold mx-auto text-xs text-blue-400 text-transform: uppercase" 
             >Past Appointments</button>:<button className="ml-10 mb-3 text-grey tracking-widest font-MT font-semibold mx-auto text-xs hover:text-blue-400 text-transform: uppercase" 
             onClick={()=>{ setSchedButton(false); setPastButton(true)
