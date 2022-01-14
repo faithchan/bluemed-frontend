@@ -17,7 +17,7 @@ const ServicesPage = () => {
     const [wellbeingServices, setWellbeingServices] = useState(false)
     const [paediatricsServices, setPaediatricsServices] = useState(false)
     const [data, setData] = useState([])
-
+    const [loadingFlag, setLoadingFlag] = useState(false)
     const doctorsURL = "https://bluemed-backend.herokuapp.com/doctor/all"
 
     const getAllDoctors = async()=>{
@@ -25,6 +25,7 @@ const ServicesPage = () => {
             const response = await fetch (doctorsURL);
             const data = await response.json();
             setData(data);
+            setLoadingFlag(true)
         }
         catch(error){
             console.log("error>>>",error)
@@ -55,7 +56,7 @@ const ServicesPage = () => {
             wellbeingServices={wellbeingServices} setWellbeingServices={setWellbeingServices} 
             paediatricsServices={paediatricsServices} setPaediatricsServices={setPaediatricsServices}
             />
-            {data.length === 0?<img className="h-32 w-32 mx-auto " src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
+            {!loadingFlag?<img className="h-32 w-32 mx-auto " src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}

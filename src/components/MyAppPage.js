@@ -15,7 +15,7 @@ const MyAppPage = () => {
     const[schedApp, setSchedApp]=useState([])
     const[allSchedApp, setAllSchedApp]=useState([])
     const[allPastApp, setAllPastApp]=useState([])
-    
+    const [loadedFlag, setLoadedFlag] = useState(false)
     //useEffect fetch api from sched and past app then pass data down to the individual appointment cards
 
     const schedAppURL = `https://bluemed-backend.herokuapp.com/schApp/patients/${userID}`
@@ -24,6 +24,7 @@ const MyAppPage = () => {
             const response = await fetch (schedAppURL);
             const data = await response.json();
             setSchedApp(data);
+            setLoadedFlag(true);
         }
         catch(error){
             console.log("error>>>",error)
@@ -36,6 +37,7 @@ const MyAppPage = () => {
             const response = await fetch (pastAppURL);
             const data = await response.json();
             setPastApp(data);
+            setLoadedFlag(true);
             
         }
         catch(error){
@@ -50,7 +52,8 @@ const MyAppPage = () => {
             const response = await fetch (allSchedAppURL);
             const data = await response.json();
 
-            setAllSchedApp(data);   
+            setAllSchedApp(data);  
+            setLoadedFlag(true); 
         }
         catch(error){
             console.log("error>>>",error)
@@ -64,7 +67,8 @@ const MyAppPage = () => {
             const response = await fetch (allPastAppURL);
             const data = await response.json();
 
-            setAllPastApp(data);   
+            setAllPastApp(data);
+            setLoadedFlag(true);   
         }
         catch(error){
             console.log("error>>>",error)
@@ -81,7 +85,9 @@ const MyAppPage = () => {
 
     return (
         <div>
+            
          <hr className="mx-28"/>
+
             <p className="mx-28 mt-4 font-MT text-grey tracking-wider">My Appointments</p>
             <AppList pastButton={pastButton} setPastButton={setPastButton} setSchedButton={setSchedButton} schedButton={schedButton} />
 
@@ -102,6 +108,10 @@ const MyAppPage = () => {
             <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 gap-10">
                 {allPastApp.map((app)=><PastAppCard name={app.attendee} appInfo={app.appTime} doctor={app.doctor.name} type={app.type} notes={app.patientNotes} status={app.medicationDelivery} price={app.cost}  appEnd={app.appTimeEnd} doctorNotes={app.doctorNotes}/>)}
             </div>:""}
+
+            {!loadedFlag?<img className="h-32 w-32 mx-auto mb-10" src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
+            
+            {schedButton && loadedFlag && schedApp.length === 0? <div >empty</div>: ""}
 
         </div>
     )
