@@ -111,7 +111,8 @@ const MyAppPage = () => {
 
             {!loadedFlag?<img className="h-32 w-32 mx-auto mb-10" src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
             
-            {schedButton && loadedFlag && schedApp.length === 0? <div >empty</div>: ""}
+            {schedButton && loadedFlag && schedApp.length === 0? <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 text-grey gap-10">No Appointments found.</div>: ""}
+            {pastButton && loadedFlag && pastApp.length === 0? <div className="mt-6 mb-10 px-28 grid justify-between grid-cols-2 text-grey gap-10">No Appointments found.</div>: ""}
 
         </div>
     )
