@@ -65,7 +65,7 @@ setPatientDetails(addDep)
             <span className="font-MT text-blue-400 font-semibold">
                 <img src={bluelogo} alt="Logo" className="h-10  mb-4"/>
                 
-                <p>Add dependency</p>
+                <p>Add dependant</p>
             </span> 
          </span>
 

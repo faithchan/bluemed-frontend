@@ -256,7 +256,7 @@ const CreateAccCard = () => {
                 <span className="mr-4">
                 <label className="block font-MT text-sm text-gray-700">Full name as per NRIC</label>
                 <input type="text" onChange={handleNameFull} value={entry.name} name="" id="" placeholder="" className="w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autoFocus autoComplete required />
-                </span>
+                </span>""
             
                 <span className="">
                 <label className="block font-MT text-sm text-gray-700">NRIC</label>
