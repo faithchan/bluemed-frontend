@@ -246,7 +246,7 @@ const CreateAccCard = () => {
 
     return (
         <div>
-            <form className="mt-2 font-MT" 
+            <form className=" font-MT p-4" 
             //</div>onFocus={()=> {setErrorSource(false)}} 
             onSubmit={(e)=> { e.preventDefault()
             
@@ -279,7 +279,7 @@ const CreateAccCard = () => {
                 <span className=''>
                 <label className="block text-sm text-gray-700 mt-4">Password:</label>
                 <span className="flex font-MT">
-                <input type="password" onChange={handlePassword} value={entry.password} name="" id="" placeholder="" minLength="6" className="mr-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                <input type="password" onChange={handlePassword} value={entry.password} name="" id="" placeholder="" minLength="6" className="mr-6 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
                         <input type="password" onChange={handlePassword2} onBlur={focusOutPassword2} value={entry.password2} name="" id="" placeholder="Retype password" minLength="6" className=" ml-2 w-full px-4 py-2 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none" required />
@@ -291,7 +291,7 @@ const CreateAccCard = () => {
                 
                     <span className="">
                     <label className="block font-MT text-sm text-gray-700" htmlFor="birthdate">Date of birth</label>
-                    <input className="mt-2 p-2 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} value={entry.DOB} id="birthday" name="birthday" 
+                    <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" type="date" onChange={handleDOB} value={entry.DOB} id="birthday" name="birthday" 
                     max= {`${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`}
                     required/>
                     </span>
@@ -300,7 +300,7 @@ const CreateAccCard = () => {
                     <span>
                     <label className="block font-MT text-sm text-gray-700">Gender</label>
 
-                    <span className="flex mt-3">   
+                    <span className="flex mt-3 mr-2">   
                     <label className="flex radio p-2 cursor-pointer">
                         <input className="my-auto transform scale-125" type="radio" onChange={handleGender} name="gender" value="male" id="male" required/>
                             <div className="title px-2">M</div>
@@ -347,12 +347,12 @@ const CreateAccCard = () => {
 
 {errorSource?
       <div role="alert">
-          <div className="bg-red text-white font-bold rounded-t px-4 py-2 mt-2">
+          {/* <div className="bg-red text-white font-bold rounded-t px-4 py-2 mt-2">
             Error
-          </div>
-          <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0">
-            <p>{`${errorSource}`}</p>
-          </div>
+          </div> */}
+          {/* <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0"> */}
+            <p className="text-red font-MT text-xs  -mb-4">{`*${errorSource}`}</p>
+          {/* </div> */}
         </div>:
         ""}
             
