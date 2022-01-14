@@ -75,7 +75,7 @@ const MyAppPage = () => {
         }
     }  
 
-    useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();getAllPastApp();},[])
+    useEffect(()=>{getSchedApp();getPastApp();getAllSchedApp();getAllPastApp();},[pastButton, schedButton])
 
 //   console.log(pastApp)
   console.log(schedApp)
