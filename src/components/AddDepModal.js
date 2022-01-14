@@ -78,7 +78,7 @@ setPatientDetails(addDep)
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">Date of birth</label>
         <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="date" id="DOB" 
-         required />
+         required max={`${new Date().getUTCFullYear()}-${new Date().toLocaleString('en-GB', {month: '2-digit'})}-${new Date().getUTCDate()}`}/>
         </span>
         </span>
 
@@ -103,15 +103,15 @@ setPatientDetails(addDep)
 
         <span className="ml-8">
         <label className="block font-MT text-sm text-gray-700" for="appt">Insurance ID</label>
-        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="insuranceID"
-        required />
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" placeholder="Optional" id="insuranceID"
+         />
         </span>
         </span>
 
         <span className="flex mt-4 justify-between">   
         <span className="">
         <label className="block font-MT text-sm text-gray-700" for="birthdate">Drug allergies</label>
-        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" required/>
+        <input className="mt-2 py-2 px-6 rounded-lg text-gray-700 text-sm" onChange={(e)=>handleChange(e)} type="text" id="allergies" placeholder="Enter NA if none" required/>
         </span>
 
         <span>
@@ -119,7 +119,7 @@ setPatientDetails(addDep)
 
                     <span className="flex  mt-3">   
                     <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" name="genderRad"/>
+                        <input className="my-auto transform scale-125" onChange={(e)=>handleChange(e)} type="radio" value="Male" id="gender" name="genderRad" required/>
                             <div className="title px-2">M</div>
                         </label>
 

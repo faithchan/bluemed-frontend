@@ -302,7 +302,7 @@ const CreateAccCard = () => {
 
                     <span className="flex mt-3">   
                     <label className="flex radio p-2 cursor-pointer">
-                        <input className="my-auto transform scale-125" type="radio" onChange={handleGender} name="gender" value="male" id="male" />
+                        <input className="my-auto transform scale-125" type="radio" onChange={handleGender} name="gender" value="male" id="male" required/>
                             <div className="title px-2">M</div>
                         </label>
 

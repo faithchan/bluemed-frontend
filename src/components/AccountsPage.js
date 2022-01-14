@@ -3,7 +3,7 @@ import UserImage from "../userimage.svg"
 import UserDetails from './UserDetails'
 import DependencyDetails from './DependencyDetails'
 import addButton from '../addButton.svg'
-import { LoginContext, adminContext, userIDContext} from '../global/Context';
+import { LoginContext, adminContext, userIDContext, patientData} from '../global/Context';
 import EditDepModal from './EditDepModal'
 import EditUserModal from './EditUserModal'
 import AddDepModal from './AddDepModal'
@@ -15,8 +15,8 @@ const AccountsPage = () => {
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
     const {admin, setAdmin} =  useContext(adminContext)
     const {userID, setUserID} =  useContext(userIDContext)
-    const [patientDetails, setPatientDetails] = useState('')
-    
+    const {patientDetails, setPatientDetails} = useContext(patientData)
+    const [refreshFlag, setRefreshFlag] = useState(false)
 
     const patientDetailsURL =  `https://bluemed-backend.herokuapp.com/patient/${userID}`
   
@@ -32,12 +32,12 @@ const AccountsPage = () => {
         }
     }   
 
-    useEffect(() => {
-        if(userID) {
-            getPatientDetails()
-        }
-    }
-    , [userID])
+    // useEffect(() => {
+    //     if(userID) {
+    //         getPatientDetails()
+    //     }
+    // }
+    // , [userID])
 
    const {name, gender, allergies, address, DOB, dependents, insuranceID} = patientDetails
    const[editDepData, setEditDepData]=useState({})
@@ -63,7 +63,7 @@ const AccountsPage = () => {
            </div>
          
             
-           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
+           {dependents?(admin?"":dependents.map(dep=><DependencyDetails editDependency={editDependency} setPatientDetails={setPatientDetails} refreshFlag={refreshFlag} setRefreshFlag={setRefreshFlag} setEditDependency={setEditDependency} dependents={dependents} depDOB={dep.DOB} depNRIC={dep.NRIC} depAddress={dep.address} depAllergies={dep.allergies} depGender={dep.gender} depInsuranceID={dep.insuranceID} depName={dep.name} depRelation={dep.relation} patientDetails={patientDetails} setPatientDetails={setPatientDetails} editDepData={editDepData} setEditDepData={setEditDepData}/>)):""}
       
            
            

@@ -5,13 +5,10 @@ import EditDepModal from './EditDepModal'
 import deleteButton from '../deleteButton.svg'
 import {userIDContext } from '../global/Context'
 
-const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,depRelation, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails, setPatientDetails, setEditDepData, editDepData}) => {
+const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,depRelation, depAddress, depAllergies, depGender,depInsuranceID, depName, patientDetails,  setEditDepData, refreshFlag, setRefreshFlag}) => {
     const{NRIC, gender, dependents, contactNumber, name, DOB, address, insuranceID, allergies} = patientDetails
     const {userID, setUserID} =  useContext(userIDContext)
 
-   
-
-   
     const[userData, setUserData] = useState({name:name,
         DOB:DOB,
         address:address,
@@ -24,22 +21,16 @@ const DependencyDetails = ({editDependency, setEditDependency, depDOB, depNRIC,d
     const editPatientUrl = `https://bluemed-backend.herokuapp.com/patient/${userID}`
 
 
-const deleteDepHandler = (e)=>{
+const deleteDepHandler = async(e)=>{
     e.preventDefault();
-    const selectedDep =  dependents.findIndex((dep)=>dep.name === depName)
-   let newDependents=dependents.splice(selectedDep,1)
-    console.log(newDependents)
-    console.log(dependents)
-    console.log(dependents.length)
-    // console.log(selectedDep)
-    setPatientDetails(userData)
-    console.log(patientDetails)
-        
-       
+    setRefreshFlag(!refreshFlag)
+    const selectedDep =  dependents.findIndex((dep)=>dep.NRIC === depNRIC)
+  dependents.splice(selectedDep,1)
+ 
    
-        console.log(userData)
-        axios.put(editPatientUrl, userData).then((userData)=>console.log(userData))
+ await axios.put(editPatientUrl, patientDetails).then((res)=>console.log(res))
 .catch((err)=>console.log(err))
+
 
 }
 
