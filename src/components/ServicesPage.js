@@ -4,6 +4,7 @@ import CategoryList from './CategoryList'
 import BookingModal from './BookingModal'
 import { useState, useEffect,useContext } from 'react'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
+import Ellipsis from '@bit/joshk.react-spinners-css.ellipsis';
 
 
 const ServicesPage = () => {
@@ -56,7 +57,7 @@ const ServicesPage = () => {
             wellbeingServices={wellbeingServices} setWellbeingServices={setWellbeingServices} 
             paediatricsServices={paediatricsServices} setPaediatricsServices={setPaediatricsServices}
             />
-            {!loadingFlag?<img className="h-32 w-32 mx-auto " src={"https://c.tenor.com/5o2p0tH5LFQAAAAj/hug.gif"} alt="spinner" />: ""}
+            {!loadingFlag?<div className="grid justify-items-center my-48"><Ellipsis color="grey"  /></div>: ""}
 
             <div className="mx-20 mt-4  grid grid-cols-3">
             {/* Need to fetch api to render the doctor cards */}
@@ -66,6 +67,7 @@ const ServicesPage = () => {
             {paediatricsServices ? filterPaeDoctor.map((service)=><DoctorCard key={service._id} doctorID={service._id} img={service.img} bio={service.bio} gender={service.gender} languages={service.languages} pricing={service.pricing} name={service.name} profession={service.profession} />) : ""}
 
             </div>
+            
 
         </div>
     )
