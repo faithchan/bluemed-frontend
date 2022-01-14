@@ -4,7 +4,7 @@ import CategoryList from './CategoryList'
 import BookingModal from './BookingModal'
 import { useState, useEffect,useContext } from 'react'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
-import Ellipsis from '@bit/joshk.react-spinners-css.ellipsis';
+import Ellipsis from './Spinner'
 
 
 const ServicesPage = () => {

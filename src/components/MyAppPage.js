@@ -3,7 +3,7 @@ import AppointmentCard from './AppointmentCard'
 import AppList from './AppList'
 import PastAppCard from './PastAppCard'
 import { LoginContext, adminContext, userIDContext } from '../global/Context';
-import Ellipsis from '@bit/joshk.react-spinners-css.ellipsis';
+import Ellipsis from './Spinner'
 
 const MyAppPage = () => {
     const {loggedIn, setLoggedIn} =  useContext(LoginContext)
