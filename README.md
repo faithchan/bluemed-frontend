@@ -95,16 +95,7 @@ Appointments and receipt
  </tr>
   <tr>
  <td>
-Receipt
-</td>
- <td>
- <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/creategroup.jpg?raw=true" width="350"/>
 
-
-</td>
-       <td>
- <img src="https://github.com/siangyin/ga-p3-frontend/blob/main/readmeRef/newcollection.png?raw=true" width="350"/>
-</td>
  </tr>
  
    
