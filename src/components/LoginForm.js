@@ -116,7 +116,7 @@ const LoginForm = () => {
 
       {failedLogin?
       <div role="alert">
-          <p className="text-red font-MT text-xs  -mb-4">Enter valid email or password</p>
+          <p className="text-red font-MT text-xs mt-4">*Enter valid email or password</p>
         </div>:
         ""}
 

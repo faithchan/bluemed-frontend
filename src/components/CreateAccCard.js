@@ -351,7 +351,7 @@ const CreateAccCard = () => {
             Error
           </div> */}
           {/* <div className="border border-t-0 border-red rounded-b bg-rose-100 px-4 py-3 text-red mb-0"> */}
-            <p className="text-red font-MT text-xs  -mb-4">{`*${errorSource}`}</p>
+            <p className="text-red font-MT text-xs mt-4">{`*${errorSource}`}</p>
           {/* </div> */}
         </div>:
         ""}
