@@ -7,7 +7,7 @@
 
 ## 💊 Introduction
 
-BlueMed was created to meet the needs of an emerging rise of demand in the healthcare sector. With Covid-19, mandatory safety measures were implemented at spaces, this also resulted in longer waiting times, lesser manpower on shifts and more patients that needed to be treated. Hence, BlueMed was created to allow the use of digital and telecommunications technology to access health care services remotely.
+BlueMed was created to meet the needs of an emerging rise of demand in the healthcare sector. With Covid-19, mandatory safety measures were implemented at spaces, this also resulted in longer waiting times, lesser manpower on shifts and more patients that needed to be treated. Hence, BlueMed was created to allow the use of digital and telecommunications technology to access healthcare services remotely.
 
 
 
