@@ -92,9 +92,7 @@ Appointments and receipt
      <td>
  <img src="./Wireframe/receipt.png" width="350"/>
 </td>
- </tr>
-  <tr>
- <td>
+
 
  </tr>
  
