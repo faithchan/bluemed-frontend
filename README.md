@@ -48,10 +48,10 @@ BlueMed was created to meet the needs of an emerging rise of demand in the healt
   Landing page
 </td>
  <td>
- <img src="./Wireframe/lp1" width="350"/>
+ <img src="./Wireframe/lp1.png" width="350"/>
 </td>
   <td>
- <img src="./Wireframe/lp2" width="350"/>
+ <img src="./Wireframe/lp2.png" width="350"/>
 </td>
  </tr>
   <tr>
@@ -59,16 +59,16 @@ BlueMed was created to meet the needs of an emerging rise of demand in the healt
  Account
 </td>
  <td>
-<img src="./Wireframe/login" width="350"/>
+<img src="./Wireframe/login.png" width="350"/>
 </td>
 <td>
-<img src="./Wireframe/signup" width="350"/>
+<img src="./Wireframe/signup.png" width="350"/>
 </td>
 <td>
-<img src="./Wireframe/editaccount" width="350"/>
+<img src="./Wireframe/editaccount.png" width="350"/>
 </td>
 <td>
-<img src="./Wireframe/account" width="350"/>
+<img src="./Wireframe/account.png" width="350"/>
 </td>
  </tr>
   <tr>
