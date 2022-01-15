@@ -1,5 +1,5 @@
 # SEI7 Project 3 - BlueMed
-[Web App - Demo Links](https://bluemed-react.herokuapp.com/)
+[BlueMed - Demo Link](https://bluemed-react.herokuapp.com/)
 
 [Front Repo](https://github.com/faithchan/bluemed-frontend)
 
