@@ -76,10 +76,10 @@ BlueMed was created to meet the needs of an emerging rise of demand in the healt
  Services 
 </td>
  <td>
- <img src="./Wireframe/services" width="350"/>
+ <img src="./Wireframe/services.png" width="350"/>
 </td>
     <td>
-<img src="./Wireframe/book" width="350"/>
+<img src="./Wireframe/book.png" width="350"/>
 </td>
  </tr>
   <tr>
@@ -87,10 +87,10 @@ BlueMed was created to meet the needs of an emerging rise of demand in the healt
 Appointments and receipt
 </td>
  <td>
- <img src="./Wireframe/schapp" width="350"/>
+ <img src="./Wireframe/schapp.png" width="350"/>
 </td>
      <td>
- <img src="./Wireframe/receipt" width="350"/>
+ <img src="./Wireframe/receipt.png" width="350"/>
 </td>
  </tr>
   <tr>
